@@ -3,34 +3,30 @@ using Microsoft.IdentityModel.Tokens;
 using NetCoreWebApiBoilerPlate.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models;
+using NetCoreWebApiBoilerPlate.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
 namespace NetCoreWebApiBoilerPlate.Services
 {
     public class UserService : IUserService
-    {
-       
-        // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-        private List<User> _users = new List<User>
-        {
-            new User { Id =  new Guid("8FA566F0-8C0A-4DAA-A0B6-03CAD6D410BE"), FirstName = "Test", LastName = "User", Username = "test", Password = "test", Email="email@email.com" }
-        };
+    {  
 
         private readonly AppSettings _appSettings;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(IOptions<AppSettings> appSettings)
+        public UserService(IOptions<AppSettings> appSettings, IUserRepository userRepository)
         {
             _appSettings = appSettings.Value;
+            _userRepository = userRepository;
         }
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
-            var user = _users.SingleOrDefault(x => x.Username == model.Username && x.Password == model.Password);
+            var user = _userRepository.Authenticate(model.Username, model.Password);
 
             // return null if user not found
             if (user == null) return null;
@@ -43,12 +39,19 @@ namespace NetCoreWebApiBoilerPlate.Services
 
         public IEnumerable<User> GetAll()
         {
-            return _users;
+            return _userRepository.GetAll();
         }
 
         public User GetById(Guid id)
         {
-            return _users.FirstOrDefault(x => x.Id == id);
+            return _userRepository.GetById(id);
+        }
+
+        public void Register(User userEntity)
+        {
+            userEntity.Id = Guid.NewGuid();
+            _userRepository.Add(userEntity);
+            _userRepository.Save();
         }
 
         // helper methods

@@ -10,5 +10,7 @@ namespace NetCoreWebApiBoilerPlate.Services
         AuthenticateResponse Authenticate(AuthenticateRequest model);
         IEnumerable<User> GetAll();
         User GetById(Guid id);
+
+        void Register(User userEntity);
     }
 }

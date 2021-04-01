@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using NetCoreWebApiBoilerPlate.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
+using NetCoreWebApiBoilerPlate.Repositories;
 using NetCoreWebApiBoilerPlate.Services;
+using System;
 
 namespace NetCoreWebApiBoilerPlate
 {
@@ -25,11 +28,23 @@ namespace NetCoreWebApiBoilerPlate
             services.AddCors();
             services.AddControllers();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             // configure strongly typed settings object
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IExampleMasterService, ExampleMasterService>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IExampleMasterRepository, ExampleMasterRepository>();
+
+            services.AddDbContext<Context>(options =>
+            {
+                options.UseSqlServer(
+                    @"Server=localhost\SQLEXPRESS;Database=NetCoreWebApiBoilerPlate;Trusted_Connection=True;");
+            });
 
             services.AddSwaggerGen(c =>
             {

@@ -1,0 +1,19 @@
+﻿using NetCoreWebApiBoilerPlate.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace NetCoreWebApiBoilerPlate.Services
+{
+    public class ExampleMasterService : IExampleMasterService
+    {
+        public IExampleMasterRepository _exampleMasterRepository { get; }
+        public ExampleMasterService(IExampleMasterRepository exampleMasterRepository)
+        {
+            _exampleMasterRepository = exampleMasterRepository;
+        }
+
+       
+    }
+}
