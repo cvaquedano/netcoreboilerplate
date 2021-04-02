@@ -25,7 +25,7 @@ namespace NetCoreWebApiBoilerPlate
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-          
+            services.AddHttpCacheHeaders();
             services.AddCors();
             services.AddControllers();
 
@@ -64,6 +64,10 @@ namespace NetCoreWebApiBoilerPlate
             }
 
             app.UseHttpsRedirection();
+
+            //Use to generate Etags on controllers response headers. 
+            // use it with If-Match header in order to handling Concurrency
+            app.UseHttpCacheHeaders(); 
 
             app.UseRouting();
 
