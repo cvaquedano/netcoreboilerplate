@@ -1,5 +1,4 @@
-﻿using NetCoreWebApiBoilerPlate.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +16,7 @@ namespace NetCoreWebApiBoilerPlate.Models
         public string Email { get; set; }
 
 
-        public AuthenticateResponseDto(User user, string token)
+        public AuthenticateResponseDto(Entities.User user, string token)
         {
             Id = user.Id;
             FirstName = user.FirstName;

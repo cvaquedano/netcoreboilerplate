@@ -1,8 +1,7 @@
-﻿using NetCoreWebApiBoilerPlate.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using NetCoreWebApiBoilerPlate.Entities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Repositories
 {
@@ -45,17 +44,23 @@ namespace NetCoreWebApiBoilerPlate.Repositories
 
         public bool IsExists(Guid id)
         {
-            throw new NotImplementedException();
+            if (id == Guid.Empty)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            return _context.User.Any(a => a.Id == id);
         }
 
         public bool Save()
         {
             return (_context.SaveChanges() >= 0);
+          
         }
 
         public void Update(User entity)
         {
-            throw new NotImplementedException();
+           
         }
     }
 }

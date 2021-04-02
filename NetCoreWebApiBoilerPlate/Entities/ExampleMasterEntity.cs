@@ -3,10 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NetCoreWebApiBoilerPlate.Entities
 {
-    public class ExampleMasterEntity
+    public class ExampleMasterEntity : BaseEntity
     {
-        [Key]
-        public Guid Id { get; set; }
+      
 
         [Required]
         [MaxLength(50)]

@@ -13,5 +13,7 @@ namespace NetCoreWebApiBoilerPlate.Services
         User GetById(Guid id);
 
         void Register(User userEntity);
+        bool IsEntityExist(Guid userId);
+        void Update(User userEntity);
     }
 }

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using NetCoreWebApiBoilerPlate.Models.BaseDtos;
+using System;
 
 namespace NetCoreWebApiBoilerPlate.Models
 {
-    public class UserBaseDto
+    public class UserBaseDto : ReadBaseDto
     {
         public Guid Id { get; set; }
 

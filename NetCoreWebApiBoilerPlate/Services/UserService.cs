@@ -64,6 +64,11 @@ namespace NetCoreWebApiBoilerPlate.Services
             return _userRepository.GetById(id);
         }
 
+        public bool IsEntityExist(Guid userId)
+        {
+            return _userRepository.IsExists(userId);
+        }
+
         public void Register(User userEntity)
         {
             if (!RegexUtilities.IsValidEmail(userEntity.Email))
@@ -75,6 +80,16 @@ namespace NetCoreWebApiBoilerPlate.Services
             _userRepository.Add(userEntity);
             _userRepository.Save();
 
+        }
+
+        public void Update(User userEntity)
+        {
+            if (!RegexUtilities.IsValidEmail(userEntity.Email))
+            {
+                return;
+            }
+            _userRepository.Update(userEntity);
+            _userRepository.Save();
         }
 
         // helper methods

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NetCoreWebApiBoilerPlate.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models;
+using NetCoreWebApiBoilerPlate.Models.UserModel;
 using NetCoreWebApiBoilerPlate.Services;
 using Newtonsoft.Json;
 using System;
@@ -45,6 +46,23 @@ namespace NetCoreWebApiBoilerPlate.Controllers
             var userToReturn = _mapper.Map<RegisterResponseDto>(userEntity);
 
             return CreatedAtRoute("GetUser", new { userId = userToReturn.Id }, userToReturn);
+        }
+
+        [HttpPut("{userId:guid}")]
+        public IActionResult UpdateAuthor(Guid userId, UserForUpdateDto userForUpdateDto)
+        {
+            if (!_userService.IsEntityExist(userId))
+            {
+                return NotFound();
+            }
+            var userFromService = _userService.GetById(userId);
+
+            _mapper.Map(userForUpdateDto, userFromService);
+
+            _userService.Update(userFromService);
+
+
+            return NoContent();
         }
 
         [Authorize]
