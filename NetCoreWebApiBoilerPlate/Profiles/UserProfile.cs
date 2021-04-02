@@ -8,14 +8,18 @@ namespace NetCoreWebApiBoilerPlate.Profiles
     {
         public UserProfile()
         {
-            CreateMap<User, UserBaseResponse>()
+            CreateMap<User, RegisterResponseDto>().ForMember(
+                   dest => dest.Name,
+                   opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}"))
+              ;
+            CreateMap<User, UserBaseDto>()
                .ForMember(
                    dest => dest.Name,
                    opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}"))
               ;
 
-            CreateMap<RegisterRequest, User>();
-            CreateMap<User, RegisterResponse>();
+            CreateMap<RegisterRequestDto, User>();
+           
         }
     }
 }

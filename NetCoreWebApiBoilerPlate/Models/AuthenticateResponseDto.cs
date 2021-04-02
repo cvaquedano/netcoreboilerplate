@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Models
 {
-    public class AuthenticateResponse
+    public class AuthenticateResponseDto
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }
@@ -17,7 +17,7 @@ namespace NetCoreWebApiBoilerPlate.Models
         public string Email { get; set; }
 
 
-        public AuthenticateResponse(User user, string token)
+        public AuthenticateResponseDto(User user, string token)
         {
             Id = user.Id;
             FirstName = user.FirstName;

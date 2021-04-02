@@ -23,9 +23,9 @@ namespace NetCoreWebApiBoilerPlate.Repositories
             _context.User.Add(entity);
         }
 
-        public User Authenticate(string username, string password)
+        public User Authenticate(string username, string email)
         {
-           return  _context.User.FirstOrDefault(x => x.Username == username && x.Password == password);
+           return  _context.User.FirstOrDefault(x => x.Username == username || x.Email == email);
         }
 
         public void Delete(User entity)
@@ -33,9 +33,9 @@ namespace NetCoreWebApiBoilerPlate.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<User> GetAll()
+        public IQueryable<User> GetAll()
         {
-            return _context.User;
+            return _context.User.AsQueryable(); 
         }
 
         public User GetById(Guid id)

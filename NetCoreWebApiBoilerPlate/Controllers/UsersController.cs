@@ -5,7 +5,9 @@ using NetCoreWebApiBoilerPlate.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models;
 using NetCoreWebApiBoilerPlate.Services;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace NetCoreWebApiBoilerPlate.Controllers
 {
@@ -23,7 +25,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         }
 
         [HttpPost("authenticate")]
-        public IActionResult Authenticate(AuthenticateRequest model)
+        public IActionResult Authenticate(AuthenticateRequestDto model)
         {
             var response = _userService.Authenticate(model);
 
@@ -34,23 +36,38 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         }
 
         [HttpPost("register")]
-        public ActionResult<RegisterResponse> Register(RegisterRequest model)
+        public ActionResult<RegisterResponseDto> Register(RegisterRequestDto model)
         {
             var userEntity = _mapper.Map<User>(model);
 
             _userService.Register(userEntity);
 
-            var userToReturn = _mapper.Map<RegisterResponse>(userEntity);
+            var userToReturn = _mapper.Map<RegisterResponseDto>(userEntity);
 
             return CreatedAtRoute("GetUser", new { userId = userToReturn.Id }, userToReturn);
         }
 
         [Authorize]
         [HttpGet(Name = "GetAll")]
-        public IActionResult GetAll()
+        public IActionResult GetAll([FromQuery] UsersRequestDto usersRequestDto)
         {
-            var users = _userService.GetAll();
-            return Ok(users);
+            var usersFromServices = _userService.GetAll(usersRequestDto);
+            var paginationMetadata = new
+            {
+                totalCount = usersFromServices.TotalCount,
+                pageSize = usersFromServices.PageSize,
+                currentPage = usersFromServices.CurrentPage,
+                totalPages = usersFromServices.TotalPages,
+
+            };
+
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(paginationMetadata));
+           
+
+            var userToReturn = _mapper.Map<IEnumerable<UserBaseDto>>(usersFromServices);
+            return Ok(userToReturn);
+
+
         }
 
         [Authorize]
@@ -64,7 +81,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
                 return NotFound();
             }
 
-            var authorToReturn = _mapper.Map<UserBaseResponse>(userFromService);
+            var authorToReturn = _mapper.Map<UserBaseDto>(userFromService);
 
             return Ok(authorToReturn);
         }
