@@ -1,5 +1,6 @@
 ﻿
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NetCoreWebApiBoilerPlate.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
@@ -26,6 +27,8 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         }
 
         [HttpPost("authenticate")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(AuthenticateResponseDto), StatusCodes.Status200OK)]
         public IActionResult Authenticate(AuthenticateRequestDto model)
         {
             var response = _userService.Authenticate(model);
@@ -37,6 +40,8 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         }
 
         [HttpPost("register")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(RegisterResponseDto), StatusCodes.Status201Created)]
         public ActionResult<RegisterResponseDto> Register(RegisterRequestDto model)
         {
             var userEntity = _mapper.Map<User>(model);
@@ -48,7 +53,10 @@ namespace NetCoreWebApiBoilerPlate.Controllers
             return CreatedAtRoute("GetUser", new { userId = userToReturn.Id }, userToReturn);
         }
 
+        [Authorize]
         [HttpPut("{userId:guid}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult UpdateAuthor(Guid userId, UserForUpdateDto userForUpdateDto)
         {
             if (!_userService.IsEntityExist(userId))
@@ -67,6 +75,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
 
         [Authorize]
         [HttpGet(Name = "GetAll")]
+        [ProducesResponseType(typeof(UserBaseDto), StatusCodes.Status200OK)]
         public IActionResult GetAll([FromQuery] UsersRequestDto usersRequestDto)
         {
             var usersFromServices = _userService.GetAll(usersRequestDto);
@@ -90,6 +99,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
 
         [Authorize]
         [HttpGet("{userId:guid}", Name = "GetUser")]
+        [ProducesResponseType(typeof(UserBaseDto), StatusCodes.Status200OK)]
         public IActionResult GetById(Guid userId)
         {
             var userFromService = _userService.GetById(userId);
@@ -102,6 +112,25 @@ namespace NetCoreWebApiBoilerPlate.Controllers
             var authorToReturn = _mapper.Map<UserBaseDto>(userFromService);
 
             return Ok(authorToReturn);
+        }
+
+        [Authorize]
+        [HttpDelete("{userId}", Name = "DeleteUser")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult Delete(Guid userId)
+        {
+            var userFromService = _userService.GetById(userId);
+            if (userFromService == null)
+            {
+                return NotFound();
+
+            }
+            _userService.Delete(userFromService);
+
+
+            return NoContent();
+
         }
 
     }

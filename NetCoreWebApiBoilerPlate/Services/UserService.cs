@@ -16,7 +16,6 @@ namespace NetCoreWebApiBoilerPlate.Services
 {
     public class UserService : IUserService
     {  
-
         private readonly AppSettings _appSettings;
         private readonly IUserRepository _userRepository;
 
@@ -39,6 +38,16 @@ namespace NetCoreWebApiBoilerPlate.Services
             var token = GenerateJwtToken(user);
 
             return new AuthenticateResponseDto(user, token);
+        }
+
+        public void Delete(User userEntity)
+        {
+            if (userEntity == null)
+            {
+                throw new ArgumentNullException(nameof(userEntity));
+            }
+            _userRepository.Delete(userEntity);
+            _userRepository.Save();
         }
 
         public PagedList<User> GetAll(UsersRequestDto usersRequestDto)
@@ -79,7 +88,6 @@ namespace NetCoreWebApiBoilerPlate.Services
             userEntity.Password = HashPassword(userEntity.Password);
             _userRepository.Add(userEntity);
             _userRepository.Save();
-
         }
 
         public void Update(User userEntity)
@@ -91,9 +99,7 @@ namespace NetCoreWebApiBoilerPlate.Services
             _userRepository.Update(userEntity);
             _userRepository.Save();
         }
-
-        // helper methods
-
+              
         private string GenerateJwtToken(User user)
         {
             // generate token that is valid for 7 days
@@ -109,12 +115,12 @@ namespace NetCoreWebApiBoilerPlate.Services
             return tokenHandler.WriteToken(token);
         }
 
-        private  string HashPassword(string input)
+        private static string HashPassword(string input)
         { // Create a function to easily hash passwords
             return SHA.ComputeSHA256Hash(input); // One function to hash using SHA256 with EasyEncryption library, returns a string.
         }
 
-        private bool PasswordsMatch(string userInput, string savedTextFilePassword)
+        private static bool PasswordsMatch(string userInput, string savedTextFilePassword)
         { // Function to check if the user input the correct password
             string hashedInput = HashPassword(userInput); // Hash user input to check it against the one stored in a file
             bool doPasswordsMatch = string.Equals(hashedInput, savedTextFilePassword); // Check both passwords

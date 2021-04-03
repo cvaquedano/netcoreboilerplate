@@ -2,7 +2,6 @@
 using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models;
 using System;
-using System.Collections.Generic;
 
 namespace NetCoreWebApiBoilerPlate.Services
 {
@@ -15,5 +14,6 @@ namespace NetCoreWebApiBoilerPlate.Services
         void Register(User userEntity);
         bool IsEntityExist(Guid userId);
         void Update(User userEntity);
+        void Delete(User userEntity);
     }
 }

@@ -29,7 +29,7 @@ namespace NetCoreWebApiBoilerPlate.Repositories
 
         public void Delete(User entity)
         {
-            throw new NotImplementedException();
+            _context.User.Remove(entity);
         }
 
         public IQueryable<User> GetAll()
