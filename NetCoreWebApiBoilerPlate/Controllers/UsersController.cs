@@ -17,7 +17,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private IUserService _userService;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
         public UsersController(IUserService userService, IMapper mapper)
@@ -57,7 +57,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         [HttpPut("{userId:guid}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public IActionResult UpdateAuthor(Guid userId, UserForUpdateDto userForUpdateDto)
+        public IActionResult UpdateUser(Guid userId, UserForUpdateDto userForUpdateDto)
         {
             if (!_userService.IsEntityExist(userId))
             {
@@ -75,7 +75,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
 
         [Authorize]
         [HttpGet(Name = "GetAll")]
-        [ProducesResponseType(typeof(UserBaseDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UserResponseDto), StatusCodes.Status200OK)]
         public IActionResult GetAll([FromQuery] UsersRequestDto usersRequestDto)
         {
             var usersFromServices = _userService.GetAll(usersRequestDto);
@@ -91,7 +91,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(paginationMetadata));
            
 
-            var userToReturn = _mapper.Map<IEnumerable<UserBaseDto>>(usersFromServices);
+            var userToReturn = _mapper.Map<IEnumerable<UserResponseDto>>(usersFromServices);
             return Ok(userToReturn);
 
 
@@ -99,7 +99,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
 
         [Authorize]
         [HttpGet("{userId:guid}", Name = "GetUser")]
-        [ProducesResponseType(typeof(UserBaseDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UserResponseDto), StatusCodes.Status200OK)]
         public IActionResult GetById(Guid userId)
         {
             var userFromService = _userService.GetById(userId);
@@ -109,7 +109,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
                 return NotFound();
             }
 
-            var authorToReturn = _mapper.Map<UserBaseDto>(userFromService);
+            var authorToReturn = _mapper.Map<UserResponseDto>(userFromService);
 
             return Ok(authorToReturn);
         }
