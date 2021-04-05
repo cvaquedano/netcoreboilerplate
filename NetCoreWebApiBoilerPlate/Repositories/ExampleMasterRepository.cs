@@ -33,9 +33,6 @@ namespace NetCoreWebApiBoilerPlate.Repositories
         {
             return await _context.ExampleMasterEntity.FindAsync(id);
         }
-
-      
-
         public async Task<bool> IsExistsAsync(Guid id)
         {
             return await _context.ExampleMasterEntity.AnyAsync(e => e.Id == id);

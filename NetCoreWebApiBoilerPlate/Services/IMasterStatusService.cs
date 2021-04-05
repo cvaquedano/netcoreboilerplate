@@ -1,9 +1,8 @@
 ﻿using NetCoreWebApiBoilerPlate.Entities;
 
-
 namespace NetCoreWebApiBoilerPlate.Services
 {
-    public interface IExampleMasterService : IService<ExampleMasterEntity>
+    public interface IMasterStatusService : IService<MasterStatusEntity>
     {
     }
 }

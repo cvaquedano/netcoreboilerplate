@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NetCoreWebApiBoilerPlate.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
-using NetCoreWebApiBoilerPlate.Models.MasterModel;
+using NetCoreWebApiBoilerPlate.Models.MasterStatusModel;
 using NetCoreWebApiBoilerPlate.Services;
 using Newtonsoft.Json;
 
@@ -15,21 +15,20 @@ namespace NetCoreWebApiBoilerPlate.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class MasterController : ControllerBase
+    public class MasterStatusController : ControllerBase
     {
-       
-        private readonly IExampleMasterService _service;
+        private readonly IMasterStatusService _service;
         private readonly IMapper _mapper;
 
-        public MasterController(IMapper mapper, IExampleMasterService service)
+        public MasterStatusController(IMapper mapper, IMasterStatusService service)
         {
             _mapper = mapper ?? throw new ArgumentException(nameof(mapper));
             _service = service ?? throw new ArgumentException(nameof(service));
         }
 
-        [HttpGet(Name = "GetAllMaster")]
-        [ProducesResponseType(typeof(MasterResponseDto), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<MasterResponseDto>>> GetAll([FromQuery] MasterRequestDto requestDto)
+        [HttpGet(Name = "GetAllMasterStatus")]
+        [ProducesResponseType(typeof(MasterStatusResponseDto), StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<MasterStatusResponseDto>>> GetAll([FromQuery] MasterStatusRequestDto requestDto)
         {
             var etitiesFromServices = await _service.GetAllAsync(requestDto);
             var paginationMetadata = new
@@ -44,13 +43,13 @@ namespace NetCoreWebApiBoilerPlate.Controllers
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(paginationMetadata));
 
 
-            var userToReturn = _mapper.Map<IEnumerable<MasterResponseDto>>(etitiesFromServices);
+            var userToReturn = _mapper.Map<IEnumerable<MasterStatusResponseDto>>(etitiesFromServices);
             return Ok(userToReturn);
         }
 
-        [HttpGet("{id:guid}", Name = "GetMasterById")]
-        [ProducesResponseType(typeof(MasterResponseDto), StatusCodes.Status200OK)]
-        public async Task<ActionResult<ExampleMasterEntity>> GetById(Guid id)
+        [HttpGet("{id:guid}", Name = "GetMasterStatusById")]
+        [ProducesResponseType(typeof(MasterStatusResponseDto), StatusCodes.Status200OK)]
+        public async Task<ActionResult<MasterStatusEntity>> GetById(Guid id)
         {
             var entityfromService = await _service.GetByIdAsync(id);
 
@@ -59,19 +58,19 @@ namespace NetCoreWebApiBoilerPlate.Controllers
                 return NotFound();
             }
 
-            var dtoToReturn = _mapper.Map<MasterResponseDto>(entityfromService);
+            var dtoToReturn = _mapper.Map<MasterStatusResponseDto>(entityfromService);
 
             return Ok(dtoToReturn);
         }
 
-        // PUT: api/Master/5
+        // PUT: api/MasterStatus/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> PutExampleMasterEntity(Guid id, MasterForUpdateDto  forUpdateDto)
+        public async Task<IActionResult> PutMasterStatusEntity(Guid id, MasterStatusForUpdateDto forUpdateDto)
         {
-            if (! await _service.IsExistsAsync(id))
+            if (!await _service.IsExistsAsync(id))
             {
                 return NotFound();
             }
@@ -85,32 +84,32 @@ namespace NetCoreWebApiBoilerPlate.Controllers
             return NoContent();
         }
 
-        // POST: api/Master
+        // POST: api/MasterStatus
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("post")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(MasterResponseDto), StatusCodes.Status201Created)]
-        public async Task<ActionResult<ExampleMasterEntity>> PostExampleMaster(MasterForCreateDto forCreateDto)
+        [ProducesResponseType(typeof(MasterStatusResponseDto), StatusCodes.Status201Created)]
+        public async Task<ActionResult<MasterStatusEntity>> PostMasterStatus(MasterStatusForCreateDto forCreateDto)
         {
 
-            var entity = _mapper.Map<ExampleMasterEntity>(forCreateDto);
+            var entity = _mapper.Map<MasterStatusEntity>(forCreateDto);
 
             await _service.AddAsync(entity);
 
-            var toReturn = _mapper.Map<MasterResponseDto>(entity);
+            var toReturn = _mapper.Map<MasterStatusResponseDto>(entity);
 
-            return CreatedAtRoute("GetMasterById", new { id = toReturn.Id }, toReturn);
-           
+            return CreatedAtRoute("GetMasterStatusById", new { id = toReturn.Id }, toReturn);
+
         }
 
-        // DELETE: api/Master/5
-        [HttpDelete("{id}", Name = "DeleteMaster")]
+        // DELETE: api/MasterStatus/5
+        [HttpDelete("{id}", Name = "DeleteMasterStatus")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> DeleteExampleMasterEntity(Guid id)
+        public async Task<IActionResult> DeleteMasterStatusEntity(Guid id)
         {
 
-            var fromService = await  _service.GetByIdAsync(id);
+            var fromService = await _service.GetByIdAsync(id);
             if (fromService == null)
             {
                 return NotFound();
@@ -122,6 +121,6 @@ namespace NetCoreWebApiBoilerPlate.Controllers
             return NoContent();
         }
 
-      
+
     }
 }

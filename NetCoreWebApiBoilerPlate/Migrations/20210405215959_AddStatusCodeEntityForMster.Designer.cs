@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetCoreWebApiBoilerPlate;
 
 namespace NetCoreWebApiBoilerPlate.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20210405215959_AddStatusCodeEntityForMster")]
+    partial class AddStatusCodeEntityForMster
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,34 +51,6 @@ namespace NetCoreWebApiBoilerPlate.Migrations
                     b.HasIndex("MasterStatusEntityId");
 
                     b.ToTable("ExampleMasterEntity");
-                });
-
-            modelBuilder.Entity("NetCoreWebApiBoilerPlate.Entities.MasterDetailEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ExampleMasterEntityId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<float>("Total")
-                        .HasColumnType("real");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ExampleMasterEntityId");
-
-                    b.ToTable("MasterDetailEntity");
                 });
 
             modelBuilder.Entity("NetCoreWebApiBoilerPlate.Entities.MasterStatusEntity", b =>
@@ -129,22 +103,6 @@ namespace NetCoreWebApiBoilerPlate.Migrations
                         .HasForeignKey("MasterStatusEntityId");
 
                     b.Navigation("MasterStatusEntity");
-                });
-
-            modelBuilder.Entity("NetCoreWebApiBoilerPlate.Entities.MasterDetailEntity", b =>
-                {
-                    b.HasOne("NetCoreWebApiBoilerPlate.Entities.ExampleMasterEntity", "ExampleMasterEntity")
-                        .WithMany("MasterDetailEntities")
-                        .HasForeignKey("ExampleMasterEntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ExampleMasterEntity");
-                });
-
-            modelBuilder.Entity("NetCoreWebApiBoilerPlate.Entities.ExampleMasterEntity", b =>
-                {
-                    b.Navigation("MasterDetailEntities");
                 });
 #pragma warning restore 612, 618
         }

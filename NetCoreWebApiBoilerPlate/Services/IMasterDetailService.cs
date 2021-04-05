@@ -3,7 +3,7 @@
 
 namespace NetCoreWebApiBoilerPlate.Services
 {
-    public interface IExampleMasterService : IService<ExampleMasterEntity>
+    public interface IMasterDetailService : IService<MasterDetailEntity>
     {
     }
 }

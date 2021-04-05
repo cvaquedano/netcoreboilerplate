@@ -8,58 +8,58 @@ using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Services
 {
-    public class ExampleMasterService : IExampleMasterService
+    public class MasterStatusService : IMasterStatusService
     {
-        public IExampleMasterRepository _repository { get; }
-        public ExampleMasterService(IExampleMasterRepository repository)
+        public IMasterStatusRepository _repository { get; }
+        public MasterStatusService(IMasterStatusRepository repository)
         {
             _repository = repository;
         }
 
-        public async Task<PagedList<ExampleMasterEntity>> GetAllAsync(PaginationRequestBaseDto requestDto)
+        public async Task<PagedList<MasterStatusEntity>> GetAllAsync(PaginationRequestBaseDto requestDto)
         {
             if (requestDto is null)
             {
                 throw new ArgumentNullException(nameof(requestDto));
             }
 
-            var collection =await Task.FromResult( _repository.GetAll());
+            var collection = await Task.FromResult(_repository.GetAll());
 
             if (!string.IsNullOrWhiteSpace(requestDto.SearchQuery))
             {
                 requestDto.SearchQuery = requestDto.SearchQuery.Trim();
-                collection = collection.Where(a => a.FirstName.Contains(requestDto.SearchQuery)
-                || a.LastName.Contains(requestDto.SearchQuery));
+                collection = collection.Where(a => a.Value.Contains(requestDto.SearchQuery)
+                || a.Description.Contains(requestDto.SearchQuery));
             }
-            return PagedList<ExampleMasterEntity>.Create(collection, requestDto.PageNumber, requestDto.PageSize);
+            return PagedList<MasterStatusEntity>.Create(collection, requestDto.PageNumber, requestDto.PageSize);
         }
 
-        public async Task<ExampleMasterEntity> GetByIdAsync(Guid id)
+        public async Task<MasterStatusEntity> GetByIdAsync(Guid id)
         {
-            return  await _repository.GetByIdAsync(id);
+            return await _repository.GetByIdAsync(id);
         }
 
-        public async Task AddAsync(ExampleMasterEntity entity)
+        public async Task AddAsync(MasterStatusEntity entity)
         {
             entity.Id = Guid.NewGuid();
-          
+
             await _repository.AddAsync(entity);
             await _repository.SaveAsync();
         }
 
-        public async Task DeleteAsync(ExampleMasterEntity entity)
+        public async Task DeleteAsync(MasterStatusEntity entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException(nameof(entity));
             }
-             _repository.Delete(entity);
+            _repository.Delete(entity);
             await _repository.SaveAsync();
         }
 
-        public async Task UpdateAsync(ExampleMasterEntity entity)
+        public async Task UpdateAsync(MasterStatusEntity entity)
         {
-             _repository.Update(entity);
+            _repository.Update(entity);
             await _repository.SaveAsync();
         }
 
