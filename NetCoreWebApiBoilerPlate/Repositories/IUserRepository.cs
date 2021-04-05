@@ -6,16 +6,9 @@ using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepository<User>
     {
-        IQueryable<User> GetAll();
-        User GetById(Guid id);
-        void Add(User entity);
-        void Delete(User entity);
-        void Update(User entity);
-        bool IsExists(Guid id);
-        User Authenticate(string username, string email);
 
-        bool Save();
+        Task<User> Authenticate(string username, string email);
     }
 }

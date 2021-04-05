@@ -1,5 +1,6 @@
 ﻿using NetCoreWebApiBoilerPlate.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
+using NetCoreWebApiBoilerPlate.Models.BaseDtos;
 using NetCoreWebApiBoilerPlate.Models.MasterModel;
 using NetCoreWebApiBoilerPlate.Repositories;
 using System;
@@ -17,7 +18,7 @@ namespace NetCoreWebApiBoilerPlate.Services
             _repository = repository;
         }
 
-        public async Task<PagedList<ExampleMasterEntity>> GetAllAsync(MasterRequestDto requestDto)
+        public async Task<PagedList<ExampleMasterEntity>> GetAllAsync(PaginationRequestBaseDto requestDto)
         {
             if (requestDto is null)
             {

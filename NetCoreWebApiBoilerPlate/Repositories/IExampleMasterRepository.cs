@@ -5,18 +5,8 @@ using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Repositories
 {
-    public interface IExampleMasterRepository
+    public interface IExampleMasterRepository : IRepository<ExampleMasterEntity>
     {
-        IQueryable<ExampleMasterEntity> GetAll();
-
-        Task<ExampleMasterEntity> GetByIdAsync(Guid id);
-        Task AddAsync(ExampleMasterEntity entity);
-        Task<bool> IsExistsAsync(Guid id);
-        Task<bool> SaveAsync();
-
-        void Delete(ExampleMasterEntity entity);
-        void Update(ExampleMasterEntity entity);
-
        
     }
 }

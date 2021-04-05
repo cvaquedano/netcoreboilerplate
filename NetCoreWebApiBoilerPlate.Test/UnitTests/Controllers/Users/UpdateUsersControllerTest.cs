@@ -18,8 +18,8 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
         }
         private void SetUpRestApiRepositoryMoq()
         {
-            userServiceMoq.Setup(c => c.IsEntityExist(_invalidadUserId)).Returns(false);
-            userServiceMoq.Setup(c => c.IsEntityExist(_validadUserId)).Returns(true);
+            userServiceMoq.Setup(c => c.IsExistsAsync(_invalidadUserId)).Returns(Task.FromResult(false));
+            userServiceMoq.Setup(c => c.IsExistsAsync(_validadUserId)).Returns(Task.FromResult(true));
         }
 
 
@@ -31,7 +31,7 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
             var userDto = new UserForUpdateDto { FirstName = "TestName", LastName = "TestLastName" };
 
             // Act
-            var response = _usersController.UpdateUser(userId, userDto);
+            var response = _usersController.UpdateUser(userId, userDto).Result;
 
 
             // Assert
@@ -46,7 +46,7 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
             var userDto = new UserForUpdateDto { FirstName = "TestName", LastName = "TestLastName" };
 
             // Act
-            var response = _usersController.UpdateUser(userId, userDto);
+            var response = _usersController.UpdateUser(userId, userDto).Result;
 
 
             // Assert

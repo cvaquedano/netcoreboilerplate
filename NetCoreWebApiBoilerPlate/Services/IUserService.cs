@@ -1,19 +1,14 @@
 ﻿using NetCoreWebApiBoilerPlate.Entities;
-using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models;
-using System;
+using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Services
 {
-    public interface IUserService
+    public interface IUserService : IService<User>
     {
-        AuthenticateResponseDto Authenticate(AuthenticateRequestDto model);
-        PagedList<User> GetAll(UsersRequestDto usersRequestDto);
-        User GetById(Guid id);
+        Task<AuthenticateResponseDto> AuthenticateAsync(AuthenticateRequestDto model);
 
-        void Register(User userEntity);
-        bool IsEntityExist(Guid userId);
-        void Update(User userEntity);
-        void Delete(User userEntity);
+    
+     
     }
 }

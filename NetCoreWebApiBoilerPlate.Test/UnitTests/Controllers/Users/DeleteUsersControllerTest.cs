@@ -20,10 +20,10 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
         }
         private void SetUpUserServiceMoq()
         {
-            userServiceMoq.Setup(c => c.GetById(_invalidadUserId)).Returns((User)null);
+            userServiceMoq.Setup(c => c.GetByIdAsync(_invalidadUserId)).Returns(Task.FromResult((User)null));
 
             var userObject = new User { Id = _validadUserId, FirstName = "ValidFirstName", LastName = "ValidLastName" };
-            userServiceMoq.Setup(c => c.GetById(_validadUserId)).Returns(userObject);
+            userServiceMoq.Setup(c => c.GetByIdAsync(_validadUserId)).Returns(Task.FromResult(userObject));
         }
 
         [TestMethod]
@@ -33,7 +33,7 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
             var userId = _validadUserId;
 
             // Act
-            var response = _usersController.Delete(userId);
+            var response = _usersController.Delete(userId).Result;
 
 
             // Assert
@@ -47,7 +47,7 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
             var userId = _invalidadUserId;
 
             // Act
-            var response = _usersController.Delete(userId);
+            var response = _usersController.Delete(userId).Result;
 
 
             // Assert

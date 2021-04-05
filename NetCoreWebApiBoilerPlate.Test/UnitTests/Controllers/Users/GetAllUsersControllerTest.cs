@@ -28,7 +28,7 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
         {
             var collection = new List<User> { new User { } };
             var pagedList = PagedList<User>.Create(collection.AsQueryable(), userRequestDto.PageNumber, userRequestDto.PageSize);
-            userServiceMoq.Setup(c => c.GetAll(userRequestDto)).Returns(pagedList);
+            userServiceMoq.Setup(c => c.GetAllAsync(userRequestDto)).Returns(Task.FromResult(pagedList));
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
 
 
             // Act on Test
-            var response = _usersController.GetAll(userRequestDto);
+            var response = _usersController.GetAll(userRequestDto).Result;
 
             // Assert the result         
             Assert.IsNotNull(response);
@@ -53,7 +53,7 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
 
 
             // Act on Test
-            var response = _usersController.GetAll(userRequestDto);
+            var response = _usersController.GetAll(userRequestDto).Result;
            
 
             // Assert the result         

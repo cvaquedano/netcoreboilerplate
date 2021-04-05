@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NetCoreWebApiBoilerPlate.Entities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -34,6 +33,8 @@ namespace NetCoreWebApiBoilerPlate.Repositories
         {
             return await _context.ExampleMasterEntity.FindAsync(id);
         }
+
+      
 
         public async Task<bool> IsExistsAsync(Guid id)
         {

@@ -10,6 +10,7 @@ using NetCoreWebApiBoilerPlate.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Controllers
 {
@@ -29,9 +30,9 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         [HttpPost("authenticate")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(AuthenticateResponseDto), StatusCodes.Status200OK)]
-        public IActionResult Authenticate(AuthenticateRequestDto model)
+        public async Task<IActionResult> Authenticate(AuthenticateRequestDto model)
         {
-            var response = _userService.Authenticate(model);
+            var response = await _userService.AuthenticateAsync(model);
 
             if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
@@ -42,11 +43,11 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         [HttpPost("register")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(RegisterResponseDto), StatusCodes.Status201Created)]
-        public ActionResult<RegisterResponseDto> Register(RegisterRequestDto model)
+        public async Task<ActionResult<RegisterResponseDto>> Register(RegisterRequestDto model)
         {
             var userEntity = _mapper.Map<User>(model);
 
-            _userService.Register(userEntity);
+            await _userService.AddAsync(userEntity);
 
             var userToReturn = _mapper.Map<RegisterResponseDto>(userEntity);
 
@@ -57,17 +58,17 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         [HttpPut("{userId:guid}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public IActionResult UpdateUser(Guid userId, UserForUpdateDto userForUpdateDto)
+        public async Task<IActionResult> UpdateUser(Guid userId, UserForUpdateDto userForUpdateDto)
         {
-            if (!_userService.IsEntityExist(userId))
+            if (!await _userService.IsExistsAsync(userId))
             {
                 return NotFound();
             }
-            var userFromService = _userService.GetById(userId);
+            var userFromService = await _userService.GetByIdAsync(userId);
 
             _mapper.Map(userForUpdateDto, userFromService);
 
-            _userService.Update(userFromService);
+            await _userService.UpdateAsync(userFromService);
 
 
             return NoContent();
@@ -76,9 +77,9 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         [Authorize]
         [HttpGet(Name = "GetAll")]
         [ProducesResponseType(typeof(UserResponseDto), StatusCodes.Status200OK)]
-        public IActionResult GetAll([FromQuery] UsersRequestDto usersRequestDto)
+        public async Task<IActionResult> GetAll([FromQuery] UsersRequestDto usersRequestDto)
         {
-            var usersFromServices = _userService.GetAll(usersRequestDto);
+            var usersFromServices = await _userService.GetAllAsync(usersRequestDto);
             var paginationMetadata = new
             {
                 totalCount = usersFromServices.TotalCount,
@@ -100,9 +101,9 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         [Authorize]
         [HttpGet("{userId:guid}", Name = "GetUser")]
         [ProducesResponseType(typeof(UserResponseDto), StatusCodes.Status200OK)]
-        public IActionResult GetById(Guid userId)
+        public async Task<IActionResult> GetById(Guid userId)
         {
-            var userFromService = _userService.GetById(userId);
+            var userFromService = await _userService.GetByIdAsync(userId);
 
             if (userFromService == null)
             {
@@ -118,15 +119,15 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         [HttpDelete("{userId}", Name = "DeleteUser")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult Delete(Guid userId)
+        public async Task<ActionResult> Delete(Guid userId)
         {
-            var userFromService = _userService.GetById(userId);
+            var userFromService = await _userService.GetByIdAsync(userId);
             if (userFromService == null)
             {
                 return NotFound();
 
             }
-            _userService.Delete(userFromService);
+            await _userService.DeleteAsync(userFromService);
 
 
             return NoContent();

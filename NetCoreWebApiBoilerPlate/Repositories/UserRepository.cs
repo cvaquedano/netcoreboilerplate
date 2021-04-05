@@ -2,6 +2,7 @@
 using NetCoreWebApiBoilerPlate.Entities;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Repositories
 {
@@ -12,19 +13,16 @@ namespace NetCoreWebApiBoilerPlate.Repositories
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
-        public void Add(User entity)
+       
+        public async Task AddAsync(User entity)
         {
-            if (entity == null)
-            {
-                throw new ArgumentNullException(nameof(entity));
-            }
+            await _context.User.AddAsync(entity);
 
-            _context.User.Add(entity);
         }
 
-        public User Authenticate(string username, string email)
+        public async Task<User> Authenticate(string username, string email)
         {
-           return  _context.User.FirstOrDefault(x => x.Username == username || x.Email == email);
+           return  await _context.User.FirstOrDefaultAsync(x => x.Username == username || x.Email == email);
         }
 
         public void Delete(User entity)
@@ -34,33 +32,30 @@ namespace NetCoreWebApiBoilerPlate.Repositories
 
         public IQueryable<User> GetAll()
         {
-            return _context.User.AsQueryable(); 
+            return _context.Set<User>().AsNoTracking();
         }
 
-        public User GetById(Guid id)
+      
+        public async Task<User> GetByIdAsync(Guid id)
         {
-            return _context.User.FirstOrDefault(x => x.Id == id);
+            return await _context.User.FindAsync(id);
         }
 
-        public bool IsExists(Guid id)
-        {
-            if (id == Guid.Empty)
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
 
-            return _context.User.Any(a => a.Id == id);
+        public async Task<bool> IsExistsAsync(Guid id)
+        {
+            return await _context.User.AnyAsync(e => e.Id == id);
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
-            return (_context.SaveChanges() >= 0);
-          
+            var result = await _context.SaveChangesAsync();
+            return (result >= 0);
         }
 
         public void Update(User entity)
         {
-           
+            _context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

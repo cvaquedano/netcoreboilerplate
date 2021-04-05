@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NetCoreWebApiBoilerPlate.Entities;
+using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
 {
@@ -15,10 +16,10 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
 
         private  void SetUpUserServiceMoq()
         {
-            userServiceMoq.Setup(c => c.GetById(_invalidadUserId)).Returns((User)null);
+            userServiceMoq.Setup(c => c.GetByIdAsync(_invalidadUserId)).Returns(Task.FromResult((User)null));
 
             var userObject = new User { Id = _validadUserId, FirstName = "ValidFirstName", LastName = "ValidLastName" };
-            userServiceMoq.Setup(c => c.GetById(_validadUserId)).Returns(userObject);
+            userServiceMoq.Setup(c => c.GetByIdAsync(_validadUserId)).Returns(Task.FromResult(userObject));
         }
 
 
@@ -28,7 +29,7 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
             //Arrange
 
             // Act on Test
-            var response = _usersController.GetById(_invalidadUserId);
+            var response = _usersController.GetById(_invalidadUserId).Result;
 
             // Assert the result         
             Assert.IsNotNull(response);
@@ -43,7 +44,7 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
             //Arrange
           
             // Act on Test
-            var response = _usersController.GetById(_validadUserId);
+            var response = _usersController.GetById(_validadUserId).Result;
 
             // Assert the result         
             Assert.IsNotNull(response);

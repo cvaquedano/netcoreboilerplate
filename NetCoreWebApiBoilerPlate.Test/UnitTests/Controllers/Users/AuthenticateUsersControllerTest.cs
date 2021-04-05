@@ -3,10 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using NetCoreWebApiBoilerPlate.Entities;
 using NetCoreWebApiBoilerPlate.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
@@ -26,7 +22,7 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
             var validModel = new AuthenticateRequestDto { Username = "Valid" };
             var returnObject = new AuthenticateResponseDto(userObject, "fakeToken");
 
-            userServiceMoq.Setup(c => c.Authenticate(It.IsAny<AuthenticateRequestDto>())).Returns(returnObject);
+            userServiceMoq.Setup(c => c.AuthenticateAsync(It.IsAny<AuthenticateRequestDto>())).Returns(Task.FromResult(returnObject));
             
         }
 
@@ -37,7 +33,7 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
             var validModel = new AuthenticateRequestDto { Username = "Valid" };
 
             // Act
-            var response = _usersController.Authenticate(validModel);
+            var response = _usersController.Authenticate(validModel).Result;
 
             // Assert
             // Assert the result         
