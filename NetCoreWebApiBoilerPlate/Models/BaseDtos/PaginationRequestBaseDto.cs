@@ -20,6 +20,6 @@ namespace NetCoreWebApiBoilerPlate.Models.BaseDtos
             set => _pageSize = (value > maxPageSize) ? maxPageSize : value;
         }
 
-        public virtual string OrderBy { get; set; } = "Name";
+        public  string OrderBy { get; set; } = "Name";
     }
 }

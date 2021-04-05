@@ -1,4 +1,5 @@
-﻿using NetCoreWebApiBoilerPlate.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using NetCoreWebApiBoilerPlate.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,39 +14,43 @@ namespace NetCoreWebApiBoilerPlate.Repositories
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
-        public void Add(ExampleMasterEntity entity)
+        public async Task AddAsync(ExampleMasterEntity entity)
         {
-            throw new NotImplementedException();
+            await _context.ExampleMasterEntity.AddAsync(entity);
+          
         }
 
         public void Delete(ExampleMasterEntity entity)
         {
-            throw new NotImplementedException();
+            _context.ExampleMasterEntity.Remove(entity);          
         }
 
-        public IEnumerable<ExampleMasterEntity> GetAll()
+        public  IQueryable<ExampleMasterEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Set<ExampleMasterEntity>().AsNoTracking();
         }
 
-        public ExampleMasterEntity GetById(Guid id)
+        public async Task<ExampleMasterEntity> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _context.ExampleMasterEntity.FindAsync(id);
         }
 
-        public bool IsExists(Guid id)
+        public async Task<bool> IsExistsAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _context.ExampleMasterEntity.AnyAsync(e => e.Id == id);
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
-            throw new NotImplementedException();
+            var result = await _context.SaveChangesAsync();
+            return (result >= 0);
         }
 
         public void Update(ExampleMasterEntity entity)
         {
-            throw new NotImplementedException();
+            _context.Entry(entity).State = EntityState.Modified;
         }
+
+   
     }
 }
