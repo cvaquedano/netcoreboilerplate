@@ -11,6 +11,7 @@ namespace NetCoreWebApiBoilerPlate.Models.MasterModel
         public DateTime DOB { get; set; }
 
         public bool Gender { get; set; }
-      
+
+        public Guid MasterStatusEntityId { get; set; }
     }
 }

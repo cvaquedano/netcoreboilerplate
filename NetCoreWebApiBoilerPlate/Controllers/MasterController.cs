@@ -110,13 +110,13 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         public async Task<IActionResult> DeleteExampleMasterEntity(Guid id)
         {
 
-            var fromService = await  _service.GetByIdAsync(id);
-            if (fromService == null)
+            var entityfromService = await  _service.GetByIdAsync(id);
+            if (entityfromService == null)
             {
                 return NotFound();
 
             }
-            await _service.DeleteAsync(fromService);
+            await _service.DeleteAsync(entityfromService);
 
 
             return NoContent();

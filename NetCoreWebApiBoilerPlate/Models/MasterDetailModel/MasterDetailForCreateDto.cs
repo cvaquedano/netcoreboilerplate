@@ -1,12 +1,14 @@
 ﻿using NetCoreWebApiBoilerPlate.Models.BaseDtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Models.MasterDetailModel
 {
     public class MasterDetailForCreateDto : WriteBaseDto
     {
+        public string Value { get; set; }
+        public int Quantity { get; set; }
+
+        public float Price { get; set; }
+
+        public float Total { get; set; }
     }
 }

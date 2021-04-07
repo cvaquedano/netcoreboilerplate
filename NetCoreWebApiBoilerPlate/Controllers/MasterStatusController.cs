@@ -43,8 +43,8 @@ namespace NetCoreWebApiBoilerPlate.Controllers
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(paginationMetadata));
 
 
-            var userToReturn = _mapper.Map<IEnumerable<MasterStatusResponseDto>>(etitiesFromServices);
-            return Ok(userToReturn);
+            var objectToReturn = _mapper.Map<IEnumerable<MasterStatusResponseDto>>(etitiesFromServices);
+            return Ok(objectToReturn);
         }
 
         [HttpGet("{id:guid}", Name = "GetMasterStatusById")]
@@ -109,13 +109,13 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         public async Task<IActionResult> DeleteMasterStatusEntity(Guid id)
         {
 
-            var fromService = await _service.GetByIdAsync(id);
-            if (fromService == null)
+            var entityfromService = await _service.GetByIdAsync(id);
+            if (entityfromService == null)
             {
                 return NotFound();
 
             }
-            await _service.DeleteAsync(fromService);
+            await _service.DeleteAsync(entityfromService);
 
 
             return NoContent();

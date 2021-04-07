@@ -29,9 +29,10 @@ namespace NetCoreWebApiBoilerPlate.Repositories
             return _context.Set<MasterDetailEntity>().AsNoTracking();
         }
 
-        public async Task<MasterDetailEntity> GetByIdAsync(Guid id)
+        public  Task<MasterDetailEntity> GetByIdAsync(Guid id)
         {
-            return await _context.MasterDetailEntity.FindAsync(id);
+            throw new NotImplementedException();
+            //return await _context.MasterDetailEntity.FindAsync(id);
         }
         public async Task<bool> IsExistsAsync(Guid id)
         {
