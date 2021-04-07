@@ -3,6 +3,7 @@ using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models.BaseDtos;
 using NetCoreWebApiBoilerPlate.Models.MasterDetailModel;
 using NetCoreWebApiBoilerPlate.Repositories;
+using NetCoreWebApiBoilerPlate.UnitsOfWork;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,10 +12,10 @@ namespace NetCoreWebApiBoilerPlate.Services
 {
     public class MasterDetailService : IMasterDetailService
     {
-        public IMasterDetailRepository _repository { get; }
-        public MasterDetailService(IMasterDetailRepository repository)
+        public IUnitOfWork _unitOfWork { get; }
+        public MasterDetailService(IUnitOfWork unitOfWork)
         {
-            _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<PagedList<MasterDetailEntity>> GetAllForMasterAsync(Guid masterId, MasterDetailRequestDto requestDto)
@@ -23,7 +24,7 @@ namespace NetCoreWebApiBoilerPlate.Services
             {
                 throw new ArgumentNullException(nameof(requestDto));
             }
-            var collection = await Task.FromResult(_repository.GetAll());
+            var collection = await Task.FromResult(_unitOfWork.MasterDetailRepository.GetAll());
 
             collection = collection.Where(t => t.ExampleMasterEntityId == masterId);
 
@@ -61,14 +62,14 @@ namespace NetCoreWebApiBoilerPlate.Services
 
         public async Task<MasterDetailEntity> GetByIdForMasterAsync(Guid masterId, Guid id)
         {
-            return await Task.FromResult(_repository.GetAll().FirstOrDefault(t=>t.ExampleMasterEntityId==masterId && t.Id==id));
+            return await Task.FromResult(_unitOfWork.MasterDetailRepository.GetAll().FirstOrDefault(t=>t.ExampleMasterEntityId==masterId && t.Id==id));
         }
 
         public async Task AddAsync(MasterDetailEntity entity)
         {
             entity.Id = Guid.NewGuid();
-            await _repository.AddAsync(entity);
-            await _repository.SaveAsync();
+            await _unitOfWork.MasterDetailRepository.AddAsync(entity);
+            await _unitOfWork.SaveAsync();
         }
 
         public async Task DeleteAsync(MasterDetailEntity entity)
@@ -77,20 +78,20 @@ namespace NetCoreWebApiBoilerPlate.Services
             {
                 throw new ArgumentNullException(nameof(entity));
             }
-            _repository.Delete(entity);
-            await _repository.SaveAsync();
+            _unitOfWork.MasterDetailRepository.Delete(entity);
+            await _unitOfWork.SaveAsync();
         }
 
         public async Task UpdateAsync(MasterDetailEntity entity)
         {
 
-            _repository.Update(entity);
-            await _repository.SaveAsync();
+            _unitOfWork.MasterDetailRepository.Update(entity);
+            await _unitOfWork.SaveAsync();
         }
 
         public async Task<bool> IsExistsAsync(Guid id)
         {
-            return await _repository.IsExistsAsync(id);
+            return await _unitOfWork.MasterDetailRepository.IsExistsAsync(id);
         }
 
       

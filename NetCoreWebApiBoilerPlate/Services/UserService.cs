@@ -6,6 +6,7 @@ using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models;
 using NetCoreWebApiBoilerPlate.Models.BaseDtos;
 using NetCoreWebApiBoilerPlate.Repositories;
+using NetCoreWebApiBoilerPlate.UnitsOfWork;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -19,17 +20,17 @@ namespace NetCoreWebApiBoilerPlate.Services
     public class UserService : IUserService
     {  
         private readonly AppSettings _appSettings;
-        private readonly IUserRepository _repository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UserService(IOptions<AppSettings> appSettings, IUserRepository userRepository)
+        public UserService(IOptions<AppSettings> appSettings, IUnitOfWork unitOfWork)
         {
             _appSettings = appSettings.Value;
-            _repository = userRepository;
+            _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
 
         public async Task<AuthenticateResponseDto> AuthenticateAsync(AuthenticateRequestDto model)
         {
-            var user = await _repository.Authenticate(model.Username, model.Email);
+            var user = await _unitOfWork.UserRepository.Authenticate(model.Username, model.Email);
             // return null if user not found
             if (user == null) return null;
 
@@ -48,8 +49,8 @@ namespace NetCoreWebApiBoilerPlate.Services
             {
                 throw new ArgumentNullException(nameof(entity));
             }
-            _repository.Delete(entity);
-            await _repository.SaveAsync();
+            _unitOfWork.UserRepository.Delete(entity);
+            await _unitOfWork.SaveAsync();
         }
 
         //public async Task<PagedList<User>> GetAllAsync(UsersRequestDto requestDto)
@@ -59,7 +60,7 @@ namespace NetCoreWebApiBoilerPlate.Services
         //        throw new ArgumentNullException(nameof(requestDto));
         //    }
 
-        //    var collection = await Task.FromResult(_repository.GetAll());
+        //    var collection = await Task.FromResult(_unitOfWork.UserRepository.GetAll());
 
         //    if (!string.IsNullOrWhiteSpace(requestDto.SearchQuery))
         //    {
@@ -72,12 +73,12 @@ namespace NetCoreWebApiBoilerPlate.Services
 
         public async Task<User> GetByIdAsync(Guid id)
         {
-            return await _repository.GetByIdAsync(id);
+            return await _unitOfWork.UserRepository.GetByIdAsync(id);
         }
 
         public async Task<bool> IsExistsAsync(Guid id)
         {
-            return await _repository.IsExistsAsync(id);
+            return await _unitOfWork.UserRepository.IsExistsAsync(id);
         }
 
 
@@ -87,8 +88,8 @@ namespace NetCoreWebApiBoilerPlate.Services
             {
                 return;
             }
-            _repository.Update(entity);
-            await _repository.SaveAsync();
+            _unitOfWork.UserRepository.Update(entity);
+            await _unitOfWork.SaveAsync();
         }
 
         private string GenerateJwtToken(User user)
@@ -125,7 +126,7 @@ namespace NetCoreWebApiBoilerPlate.Services
                 throw new ArgumentNullException(nameof(requestDto));
             }
 
-            var collection = await Task.FromResult(_repository.GetAll());
+            var collection = await Task.FromResult(_unitOfWork.UserRepository.GetAll());
 
             if (!string.IsNullOrWhiteSpace(requestDto.SearchQuery))
             {
@@ -144,8 +145,8 @@ namespace NetCoreWebApiBoilerPlate.Services
             }
             entity.Id = Guid.NewGuid();
             entity.Password = HashPassword(entity.Password);
-            await _repository.AddAsync(entity);
-            await _repository.SaveAsync();
+            await _unitOfWork.UserRepository.AddAsync(entity);
+            await _unitOfWork.SaveAsync();
         }
     }
 }

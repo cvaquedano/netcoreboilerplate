@@ -18,8 +18,7 @@ namespace NetCoreWebApiBoilerPlate.Repositories
      
 
         Task<bool> IsExistsAsync(Guid id);
-        Task<bool> SaveAsync();
-
+   
         void Delete(T entity);
         void Update(T entity);
     }

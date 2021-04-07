@@ -2,6 +2,7 @@
 using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models.BaseDtos;
 using NetCoreWebApiBoilerPlate.Repositories;
+using NetCoreWebApiBoilerPlate.UnitsOfWork;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,10 +11,10 @@ namespace NetCoreWebApiBoilerPlate.Services
 {
     public class MasterStatusService : IMasterStatusService
     {
-        public IMasterStatusRepository _repository { get; }
-        public MasterStatusService(IMasterStatusRepository repository)
+        public IUnitOfWork _unitOfWork { get; }
+        public MasterStatusService(IUnitOfWork unitOfWork)
         {
-            _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<PagedList<MasterStatusEntity>> GetAllAsync(PaginationRequestBaseDto requestDto)
@@ -23,7 +24,7 @@ namespace NetCoreWebApiBoilerPlate.Services
                 throw new ArgumentNullException(nameof(requestDto));
             }
 
-            var collection = await Task.FromResult(_repository.GetAll());
+            var collection = await Task.FromResult(_unitOfWork.MasterStatusRepository.GetAll());
 
             if (!string.IsNullOrWhiteSpace(requestDto.SearchQuery))
             {
@@ -36,15 +37,15 @@ namespace NetCoreWebApiBoilerPlate.Services
 
         public async Task<MasterStatusEntity> GetByIdAsync(Guid id)
         {
-            return await _repository.GetByIdAsync(id);
+            return await _unitOfWork.MasterStatusRepository.GetByIdAsync(id);
         }
 
         public async Task AddAsync(MasterStatusEntity entity)
         {
             entity.Id = Guid.NewGuid();
 
-            await _repository.AddAsync(entity);
-            await _repository.SaveAsync();
+            await _unitOfWork.MasterStatusRepository.AddAsync(entity);
+            await _unitOfWork.SaveAsync();
         }
 
         public async Task DeleteAsync(MasterStatusEntity entity)
@@ -53,19 +54,19 @@ namespace NetCoreWebApiBoilerPlate.Services
             {
                 throw new ArgumentNullException(nameof(entity));
             }
-            _repository.Delete(entity);
-            await _repository.SaveAsync();
+            _unitOfWork.MasterStatusRepository.Delete(entity);
+            await _unitOfWork.SaveAsync();
         }
 
         public async Task UpdateAsync(MasterStatusEntity entity)
         {
-            _repository.Update(entity);
-            await _repository.SaveAsync();
+            _unitOfWork.MasterStatusRepository.Update(entity);
+            await _unitOfWork.SaveAsync();
         }
 
         public async Task<bool> IsExistsAsync(Guid id)
         {
-            return await _repository.IsExistsAsync(id);
+            return await _unitOfWork.MasterStatusRepository.IsExistsAsync(id);
         }
     }
 }

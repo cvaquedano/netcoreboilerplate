@@ -9,6 +9,7 @@ using NetCoreWebApiBoilerPlate.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Repositories;
 using NetCoreWebApiBoilerPlate.Services;
+using NetCoreWebApiBoilerPlate.UnitsOfWork;
 using System;
 
 namespace NetCoreWebApiBoilerPlate
@@ -40,10 +41,8 @@ namespace NetCoreWebApiBoilerPlate
             services.AddScoped<IMasterStatusService, MasterStatusService>();
             services.AddScoped<IMasterDetailService, MasterDetailService>();
 
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IExampleMasterRepository, ExampleMasterRepository>();
-            services.AddScoped<IMasterStatusRepository, MasterStatusRepository>();
-            services.AddScoped<IMasterDetailRepository, MasterDetailRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+          
 
             services.AddDbContext<Context>(options =>
             {

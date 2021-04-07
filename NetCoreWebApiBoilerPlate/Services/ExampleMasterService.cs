@@ -2,6 +2,7 @@
 using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models.BaseDtos;
 using NetCoreWebApiBoilerPlate.Repositories;
+using NetCoreWebApiBoilerPlate.UnitsOfWork;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,10 +12,10 @@ namespace NetCoreWebApiBoilerPlate.Services
     public class ExampleMasterService : IExampleMasterService
     {
        
-        public IExampleMasterRepository _repository { get; }
-        public ExampleMasterService(IExampleMasterRepository repository)
+        public IUnitOfWork _unitOfWork { get; }
+        public ExampleMasterService(IUnitOfWork unitOfWork)
         {
-            _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<PagedList<ExampleMasterEntity>> GetAllAsync(PaginationRequestBaseDto requestDto)
@@ -24,7 +25,7 @@ namespace NetCoreWebApiBoilerPlate.Services
                 throw new ArgumentNullException(nameof(requestDto));
             }
 
-            var collection =await Task.FromResult( _repository.GetAll());
+            var collection =await Task.FromResult( _unitOfWork.ExampleMasterRepository.GetAll());
 
             if (!string.IsNullOrWhiteSpace(requestDto.SearchQuery))
             {
@@ -37,15 +38,15 @@ namespace NetCoreWebApiBoilerPlate.Services
 
         public async Task<ExampleMasterEntity> GetByIdAsync(Guid id)
         {
-            return  await _repository.GetByIdAsync(id);
+            return  await _unitOfWork.ExampleMasterRepository.GetByIdAsync(id);
         }
 
         public async Task AddAsync(ExampleMasterEntity entity)
         {
             entity.Id = Guid.NewGuid();
           
-            await _repository.AddAsync(entity);
-            await _repository.SaveAsync();
+            await _unitOfWork.ExampleMasterRepository.AddAsync(entity);
+            await _unitOfWork.SaveAsync();
         }
 
         public async Task DeleteAsync(ExampleMasterEntity entity)
@@ -54,19 +55,19 @@ namespace NetCoreWebApiBoilerPlate.Services
             {
                 throw new ArgumentNullException(nameof(entity));
             }
-             _repository.Delete(entity);
-            await _repository.SaveAsync();
+             _unitOfWork.ExampleMasterRepository.Delete(entity);
+            await _unitOfWork.SaveAsync();
         }
 
         public async Task UpdateAsync(ExampleMasterEntity entity)
         {
-             _repository.Update(entity);
-            await _repository.SaveAsync();
+             _unitOfWork.ExampleMasterRepository.Update(entity);
+            await _unitOfWork.SaveAsync();
         }
 
         public async Task<bool> IsExistsAsync(Guid id)
         {
-            return await _repository.IsExistsAsync(id);
+            return await _unitOfWork.ExampleMasterRepository.IsExistsAsync(id);
         }
     }
 }

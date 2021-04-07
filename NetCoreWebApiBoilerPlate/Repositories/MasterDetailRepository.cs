@@ -39,11 +39,7 @@ namespace NetCoreWebApiBoilerPlate.Repositories
             return await _context.MasterDetailEntity.AnyAsync(e => e.Id == id);
         }
 
-        public async Task<bool> SaveAsync()
-        {
-            var result = await _context.SaveChangesAsync();
-            return (result >= 0);
-        }
+        
 
         public void Update(MasterDetailEntity entity)
         {

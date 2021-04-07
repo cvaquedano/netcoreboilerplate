@@ -47,11 +47,7 @@ namespace NetCoreWebApiBoilerPlate.Repositories
             return await _context.User.AnyAsync(e => e.Id == id);
         }
 
-        public async Task<bool> SaveAsync()
-        {
-            var result = await _context.SaveChangesAsync();
-            return (result >= 0);
-        }
+      
 
         public void Update(User entity)
         {
