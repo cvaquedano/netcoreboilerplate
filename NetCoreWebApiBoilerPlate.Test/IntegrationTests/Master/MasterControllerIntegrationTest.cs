@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NetCoreWebApiBoilerPlate.Models.MasterModel;
+using NetCoreWebApiBoilerPlate.Models.MasterStatusModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,12 +32,20 @@ namespace NetCoreWebApiBoilerPlate.Test.IntegrationTests.Master
         {
             // Arrange    
             await AuthenticateAsync();
-            var createdPost = await CreatePostAsync(new MasterForCreateDto 
-            { 
-                FirstName = "Integration post", 
-                LastName = "Integration Test" ,
-                DOB = new DateTime(1988,4,14)
+            var createdStatus = await CreateMasterStatusPostAsync(new MasterStatusForCreateDto
+            {
+                Value = "Integrationpost",
+                Description = "Integration Test",
+               
             });
+
+            var createdPost = await CreateMasterPostAsync(new MasterForCreateDto
+            {
+                FirstName = "Integration post",
+                LastName = "Integration Test",
+                DOB = new DateTime(1988, 4, 14),
+                MasterStatusEntityId = createdStatus.Id
+            }); ;
 
             // Act           
             var response = await TestClient.GetAsync("api/master/{id}".Replace("{id}", createdPost.Id.ToString()));

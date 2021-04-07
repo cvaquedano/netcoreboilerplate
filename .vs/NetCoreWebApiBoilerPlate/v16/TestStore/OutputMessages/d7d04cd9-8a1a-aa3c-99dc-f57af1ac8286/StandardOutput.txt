@@ -15,11 +15,11 @@ info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
       Generating expiration headers.
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
-      Expiration headers generated. Expires: Wed, 07 Apr 2021 17:17:15 GMT. Cache-Control: public,max-age=60.
+      Expiration headers generated. Expires: Wed, 07 Apr 2021 23:36:51 GMT. Cache-Control: public,max-age=60.
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
       Generating Validation headers.
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
-      Validation headers generated. ETag: Strong, "CA01572EBF89FAC75BAB7CBB6311EC3A". Last-Modified: Wed, 07 Apr 2021 17:16:15 GMT
+      Validation headers generated. ETag: Strong, "052E1E2888BCBF739AA6BF95083E7192". Last-Modified: Wed, 07 Apr 2021 23:35:51 GMT
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
       Generating Vary header.
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
@@ -39,11 +39,11 @@ info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
       Generating expiration headers.
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
-      Expiration headers generated. Expires: Wed, 07 Apr 2021 17:17:15 GMT. Cache-Control: public,max-age=60.
+      Expiration headers generated. Expires: Wed, 07 Apr 2021 23:36:51 GMT. Cache-Control: public,max-age=60.
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
       Generating Validation headers.
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
-      Validation headers generated. ETag: Strong, "63F558FF7494D8572286FAFFC3B7826E". Last-Modified: Wed, 07 Apr 2021 17:16:15 GMT
+      Validation headers generated. ETag: Strong, "42E665CEB3A63A2D83E2D417163CA270". Last-Modified: Wed, 07 Apr 2021 23:35:51 GMT
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
       Generating Vary header.
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
@@ -67,7 +67,7 @@ warn: Microsoft.EntityFrameworkCore.Query[10102]
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
       Generating expiration headers.
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
-      Expiration headers generated. Expires: Wed, 07 Apr 2021 17:17:15 GMT. Cache-Control: public,max-age=60.
+      Expiration headers generated. Expires: Wed, 07 Apr 2021 23:36:51 GMT. Cache-Control: public,max-age=60.
 info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
       Generating Validation headers.
 info
