@@ -10,6 +10,7 @@ namespace NetCoreWebApiBoilerPlate.Services
 {
     public class ExampleMasterService : IExampleMasterService
     {
+       
         public IExampleMasterRepository _repository { get; }
         public ExampleMasterService(IExampleMasterRepository repository)
         {

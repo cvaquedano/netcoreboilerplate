@@ -1,0 +1,98 @@
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Checking for conditional GET/HEAD.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Not valid - method isn't GET or HEAD.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Don't generate 304 - Not Modified.  Continue.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Checking for conditional PUT/PATCH.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Not valid - method isn't PUT or PATCH.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Don't generate 412 - Precondition Failed.  Continue.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Generating expiration headers.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Expiration headers generated. Expires: Wed, 07 Apr 2021 17:17:13 GMT. Cache-Control: public,max-age=60.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Generating Validation headers.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Validation headers generated. ETag: Strong, "4378961A1EEF537962E3797A2485CBED". Last-Modified: Wed, 07 Apr 2021 17:16:13 GMT
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Generating Vary header.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Vary header generated: Accept, Accept-Language, Accept-Encoding.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Checking for conditional GET/HEAD.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Not valid - method isn't GET or HEAD.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Don't generate 304 - Not Modified.  Continue.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Checking for conditional PUT/PATCH.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Not valid - method isn't PUT or PATCH.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Don't generate 412 - Precondition Failed.  Continue.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Generating expiration headers.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Expiration headers generated. Expires: Wed, 07 Apr 2021 17:17:14 GMT. Cache-Control: public,max-age=60.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Generating Validation headers.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Validation headers generated. ETag: Strong, "2276F20D5BC1B17463D51F4A1E773D21". Last-Modified: Wed, 07 Apr 2021 17:16:14 GMT
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Generating Vary header.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Vary header generated: Accept, Accept-Language, Accept-Encoding.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Checking for conditional GET/HEAD.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Not valid - method isn't GET or HEAD.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Don't generate 304 - Not Modified.  Continue.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Checking for conditional PUT/PATCH.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Not valid - method isn't PUT or PATCH.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Don't generate 412 - Precondition Failed.  Continue.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Generating expiration headers.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Expiration headers generated. Expires: Wed, 07 Apr 2021 17:17:15 GMT. Cache-Control: public,max-age=60.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Generating Validation headers.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Validation headers generated. ETag: Strong, "00DCD9242D54AA2A835C6A81889B67F6". Last-Modified: Wed, 07 Apr 2021 17:16:15 GMT
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Generating Vary header.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Vary header generated: Accept, Accept-Language, Accept-Encoding.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Checking for conditional GET/HEAD.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Not valid - no If-None-Match or If-Modified-Since headers.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Don't generate 304 - Not Modified.  Continue.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Checking for conditional PUT/PATCH.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Not valid - method isn't PUT or PATCH.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Don't generate 412 - Precondition Failed.  Continue.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Generating expiration headers.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Expiration headers generated. Expires: Wed, 07 Apr 2021 17:17:15 GMT. Cache-Control: public,max-age=60.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Generating Validation headers.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Validation headers generated. ETag: Strong, "9C2D4AAC8BB338481ED48DFB519EC304". Last-Modified: Wed, 07 Apr 2021 17:16:15 GMT
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Generating Vary header.
+info: Marvin.Cache.Headers.HttpCacheHeadersMiddleware[0]
+      Vary header generated: Accept, Accept-Language, Accept-Encoding.

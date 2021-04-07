@@ -37,9 +37,13 @@ namespace NetCoreWebApiBoilerPlate
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IExampleMasterService, ExampleMasterService>();
+            services.AddScoped<IMasterStatusService, MasterStatusService>();
+            services.AddScoped<IMasterDetailService, MasterDetailService>();
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IExampleMasterRepository, ExampleMasterRepository>();
+            services.AddScoped<IMasterStatusRepository, MasterStatusRepository>();
+            services.AddScoped<IMasterDetailRepository, MasterDetailRepository>();
 
             services.AddDbContext<Context>(options =>
             {

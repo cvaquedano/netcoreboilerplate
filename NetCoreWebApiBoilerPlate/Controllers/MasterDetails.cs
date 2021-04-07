@@ -49,7 +49,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
 
         [HttpGet("{id:guid}", Name = "GetMasterDetailById")]
         [ProducesResponseType(typeof(MasterDetailResponseDto), StatusCodes.Status200OK)]
-        public async Task<ActionResult<MasterDetailEntity>> GetById(Guid id)
+        public async Task<ActionResult<MasterDetailResponseDto>> GetById(Guid id)
         {
             var entityfromService = await _service.GetByIdAsync(id);
 
@@ -89,7 +89,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         [HttpPost("post")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(MasterDetailResponseDto), StatusCodes.Status201Created)]
-        public async Task<ActionResult<MasterDetailEntity>> PostMasterDetail(MasterDetailForCreateDto forCreateDto)
+        public async Task<ActionResult<MasterDetailResponseDto>> PostMasterDetail(MasterDetailForCreateDto forCreateDto)
         {
 
             var entity = _mapper.Map<MasterDetailEntity>(forCreateDto);

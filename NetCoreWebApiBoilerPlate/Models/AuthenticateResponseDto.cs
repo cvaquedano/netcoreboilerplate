@@ -25,5 +25,9 @@ namespace NetCoreWebApiBoilerPlate.Models
             Email = user.Email;
             Token = token;
         }
+        public AuthenticateResponseDto()
+        {
+
+        }
     }
 }
