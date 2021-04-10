@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreWebApiBoilerPlate", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreWebApiBoilerPlate.Test", "NetCoreWebApiBoilerPlate.Test\NetCoreWebApiBoilerPlate.Test.csproj", "{11A4F8A3-4633-435F-9D24-66757B89E1EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreWebApiBoilerPlate.Data", "NetCoreWebApiBoilerPlate.Data\NetCoreWebApiBoilerPlate.Data.csproj", "{6AD81419-1902-4ABC-B2BB-087F159CDACF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreWebApiBoilerPlate.Domain", "NetCoreWebApiBoilerPlate.Domain\NetCoreWebApiBoilerPlate.Domain.csproj", "{9362332B-31D9-426D-8C61-72978246F987}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{11A4F8A3-4633-435F-9D24-66757B89E1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11A4F8A3-4633-435F-9D24-66757B89E1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11A4F8A3-4633-435F-9D24-66757B89E1EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AD81419-1902-4ABC-B2BB-087F159CDACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AD81419-1902-4ABC-B2BB-087F159CDACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AD81419-1902-4ABC-B2BB-087F159CDACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AD81419-1902-4ABC-B2BB-087F159CDACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9362332B-31D9-426D-8C61-72978246F987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9362332B-31D9-426D-8C61-72978246F987}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9362332B-31D9-426D-8C61-72978246F987}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9362332B-31D9-426D-8C61-72978246F987}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

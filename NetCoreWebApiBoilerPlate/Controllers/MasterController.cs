@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NetCoreWebApiBoilerPlate.Entities;
+using NetCoreWebApiBoilerPlate.Domain.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models.MasterModel;
 using NetCoreWebApiBoilerPlate.Services;
@@ -64,8 +64,7 @@ namespace NetCoreWebApiBoilerPlate.Controllers
             return Ok(dtoToReturn);
         }
 
-        // PUT: api/Master/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPut("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

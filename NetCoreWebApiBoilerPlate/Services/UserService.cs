@@ -1,14 +1,12 @@
 ﻿using EasyEncryption;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using NetCoreWebApiBoilerPlate.Entities;
+using NetCoreWebApiBoilerPlate.Domain.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models;
 using NetCoreWebApiBoilerPlate.Models.BaseDtos;
-using NetCoreWebApiBoilerPlate.Repositories;
-using NetCoreWebApiBoilerPlate.UnitsOfWork;
+using NetCoreWebApiBoilerPlate.Data.UnitsOfWork;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;

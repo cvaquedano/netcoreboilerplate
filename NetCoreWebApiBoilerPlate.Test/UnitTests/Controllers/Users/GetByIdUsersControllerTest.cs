@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NetCoreWebApiBoilerPlate.Entities;
+using NetCoreWebApiBoilerPlate.Domain.Entities;
 using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users

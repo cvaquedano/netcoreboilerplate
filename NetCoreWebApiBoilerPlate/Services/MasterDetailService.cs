@@ -1,9 +1,8 @@
-﻿using NetCoreWebApiBoilerPlate.Entities;
+﻿using NetCoreWebApiBoilerPlate.Domain.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models.BaseDtos;
 using NetCoreWebApiBoilerPlate.Models.MasterDetailModel;
-using NetCoreWebApiBoilerPlate.Repositories;
-using NetCoreWebApiBoilerPlate.UnitsOfWork;
+using NetCoreWebApiBoilerPlate.Data.UnitsOfWork;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.EntityFrameworkCore;
 using NetCoreWebApiBoilerPlate.Test.Helpers;
 using NetCoreWebApiBoilerPlate.Models;
+using NetCoreWebApiBoilerPlate.Data;
 
 namespace NetCoreWebApiBoilerPlate.Test.IntegrationTests
 {

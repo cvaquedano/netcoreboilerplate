@@ -1,0 +1,12 @@
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Domain\bin\Debug\net5.0\NetCoreWebApiBoilerPlate.Domain.deps.json
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Domain\bin\Debug\net5.0\NetCoreWebApiBoilerPlate.Domain.dll
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Domain\bin\Debug\net5.0\ref\NetCoreWebApiBoilerPlate.Domain.dll
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Domain\bin\Debug\net5.0\NetCoreWebApiBoilerPlate.Domain.pdb
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Domain\obj\Debug\net5.0\NetCoreWebApiBoilerPlate.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Domain\obj\Debug\net5.0\NetCoreWebApiBoilerPlate.Domain.AssemblyInfoInputs.cache
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Domain\obj\Debug\net5.0\NetCoreWebApiBoilerPlate.Domain.AssemblyInfo.cs
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Domain\obj\Debug\net5.0\NetCoreWebApiBoilerPlate.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Domain\obj\Debug\net5.0\NetCoreWebApiBoilerPlate.Domain.dll
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Domain\obj\Debug\net5.0\ref\NetCoreWebApiBoilerPlate.Domain.dll
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Domain\obj\Debug\net5.0\NetCoreWebApiBoilerPlate.Domain.pdb
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Domain\obj\Debug\net5.0\NetCoreWebApiBoilerPlate.Domain.csprojAssemblyReference.cache

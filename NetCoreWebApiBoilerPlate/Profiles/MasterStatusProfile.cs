@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using NetCoreWebApiBoilerPlate.Entities;
+using NetCoreWebApiBoilerPlate.Domain.Entities;
 using NetCoreWebApiBoilerPlate.Models.MasterStatusModel;
 
 namespace NetCoreWebApiBoilerPlate.Profiles

@@ -521,3 +521,5 @@ C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlat
 C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Test\bin\Debug\net5.0\Microsoft.AspNetCore.TestHost.dll
 C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Test\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Test\bin\Debug\net5.0\System.IO.Pipelines.dll
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Test\bin\Debug\net5.0\NetCoreWebApiBoilerPlate.Domain.dll
+C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Test\bin\Debug\net5.0\NetCoreWebApiBoilerPlate.Domain.pdb

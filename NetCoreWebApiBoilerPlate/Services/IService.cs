@@ -1,4 +1,4 @@
-﻿using NetCoreWebApiBoilerPlate.Entities;
+﻿using NetCoreWebApiBoilerPlate.Domain.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Models.BaseDtos;
 using System;

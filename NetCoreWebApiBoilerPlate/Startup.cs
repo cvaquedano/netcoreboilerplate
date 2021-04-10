@@ -5,12 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using NetCoreWebApiBoilerPlate.Entities;
 using NetCoreWebApiBoilerPlate.Helpers;
-using NetCoreWebApiBoilerPlate.Repositories;
 using NetCoreWebApiBoilerPlate.Services;
-using NetCoreWebApiBoilerPlate.UnitsOfWork;
+using NetCoreWebApiBoilerPlate.Data.UnitsOfWork;
 using System;
+using NetCoreWebApiBoilerPlate.Data;
 
 namespace NetCoreWebApiBoilerPlate
 {
@@ -40,7 +39,7 @@ namespace NetCoreWebApiBoilerPlate
             services.AddScoped<IExampleMasterService, ExampleMasterService>();
             services.AddScoped<IMasterStatusService, MasterStatusService>();
             services.AddScoped<IMasterDetailService, MasterDetailService>();
-
+          
             services.AddScoped<IUnitOfWork, UnitOfWork>();
           
 

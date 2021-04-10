@@ -1,4 +1,4 @@
-﻿using NetCoreWebApiBoilerPlate.Entities;
+﻿using NetCoreWebApiBoilerPlate.Domain.Entities;
 
 
 namespace NetCoreWebApiBoilerPlate.Services
