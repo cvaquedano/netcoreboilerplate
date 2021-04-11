@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QfI3KMzr/OPJbbQM6NNQkkoFY3mGEcjgJjzJjVU9Pu74uNoug/4GTauYmnv58PdlKVysiep8fObkvYrKjJK97g==",
+  "dgSpecHash": "9wRZ1wG4Ljl3gACjmbziTIJ+7ETmMc81aReBJoBZH+pfL/Za1h/n3btucBqGLyKgw5NLqWmCQAtoq185A6+B/g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Carlos\\source\\repos\\C#\\NetCoreWebApiBoilerPlate\\NetCoreWebApiBoilerPlate.Test\\NetCoreWebApiBoilerPlate.Test.csproj",
   "expectedPackageFiles": [
@@ -88,6 +88,7 @@
     "C:\\Users\\Carlos\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Carlos\\.nuget\\packages\\microsoft.testplatform.objectmodel\\16.7.1\\microsoft.testplatform.objectmodel.16.7.1.nupkg.sha512",
     "C:\\Users\\Carlos\\.nuget\\packages\\microsoft.testplatform.testhost\\16.7.1\\microsoft.testplatform.testhost.16.7.1.nupkg.sha512",
+    "C:\\Users\\Carlos\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
     "C:\\Users\\Carlos\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\5.0.2\\microsoft.visualstudio.web.codegeneration.5.0.2.nupkg.sha512",
     "C:\\Users\\Carlos\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\5.0.2\\microsoft.visualstudio.web.codegeneration.contracts.5.0.2.nupkg.sha512",
     "C:\\Users\\Carlos\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\5.0.2\\microsoft.visualstudio.web.codegeneration.core.5.0.2.nupkg.sha512",
