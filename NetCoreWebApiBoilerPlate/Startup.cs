@@ -46,7 +46,17 @@ namespace NetCoreWebApiBoilerPlate
             services.AddDbContext<Context>(options =>
             {
                 options.UseSqlServer(
-                    @"Server=localhost\SQLEXPRESS;Database=NetCoreWebApiBoilerPlate;Trusted_Connection=True;");
+                    @"Server=localhost\SQLEXPRESS;Database=NetCoreWebApiBoilerPlate;Trusted_Connection=True;",
+
+                    // Connection resiliency automatically retries failed database commands.
+                    sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(
+                        maxRetryCount: 3,
+                        maxRetryDelay: TimeSpan.FromSeconds(30),
+                        errorNumbersToAdd: null);
+                    }
+                    );
             });
 
             services.AddSwaggerGen(c =>
