@@ -10,6 +10,7 @@ using NetCoreWebApiBoilerPlate.Services;
 using NetCoreWebApiBoilerPlate.Data.UnitsOfWork;
 using System;
 using NetCoreWebApiBoilerPlate.Data;
+using Polly;
 
 namespace NetCoreWebApiBoilerPlate
 {
@@ -32,7 +33,9 @@ namespace NetCoreWebApiBoilerPlate
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // configure strongly typed settings object
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.Configure<AppSettings>(Configuration.GetSection(nameof(AppSettings)));
+
+            services.Configure<ServiceSetting>(Configuration.GetSection(nameof(ServiceSetting)));
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
@@ -43,7 +46,7 @@ namespace NetCoreWebApiBoilerPlate
             services.AddScoped<IUnitOfWork, UnitOfWork>();
           
 
-            services.AddDbContext<Context>(options =>
+            services.AddDbContext<Data.Context>(options =>
             {
                 options.UseSqlServer(
                     @"Server=localhost\SQLEXPRESS;Database=NetCoreWebApiBoilerPlate;Trusted_Connection=True;",
@@ -63,6 +66,17 @@ namespace NetCoreWebApiBoilerPlate
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NetCoreWebApiBoilerPlate", Version = "v1" });
             });
+
+            services.AddHttpClient<ExternalServiceClient>()
+                .AddTransientHttpErrorPolicy( builder => builder.WaitAndRetryAsync(10, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))))
+                .AddTransientHttpErrorPolicy( builder => builder.CircuitBreakerAsync(3, TimeSpan.FromSeconds(15)));
+
+
+
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

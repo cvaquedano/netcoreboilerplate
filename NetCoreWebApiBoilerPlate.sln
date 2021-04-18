@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreWebApiBoilerPlate", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreWebApiBoilerPlate.Test", "NetCoreWebApiBoilerPlate.Test\NetCoreWebApiBoilerPlate.Test.csproj", "{11A4F8A3-4633-435F-9D24-66757B89E1EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreWebApiBoilerPlate.Data", "NetCoreWebApiBoilerPlate.Data\NetCoreWebApiBoilerPlate.Data.csproj", "{6AD81419-1902-4ABC-B2BB-087F159CDACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreWebApiBoilerPlate.Data", "NetCoreWebApiBoilerPlate.Data\NetCoreWebApiBoilerPlate.Data.csproj", "{6AD81419-1902-4ABC-B2BB-087F159CDACF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreWebApiBoilerPlate.Domain", "NetCoreWebApiBoilerPlate.Domain\NetCoreWebApiBoilerPlate.Domain.csproj", "{9362332B-31D9-426D-8C61-72978246F987}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreWebApiBoilerPlate.Domain", "NetCoreWebApiBoilerPlate.Domain\NetCoreWebApiBoilerPlate.Domain.csproj", "{9362332B-31D9-426D-8C61-72978246F987}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
