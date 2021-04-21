@@ -1,7 +1,7 @@
 # netcoreboilerplate
 ## Backend template project
-## Web api using .net core 5
-## features included on this project
+Web api using .net core 5
+## Solution divided on three projects, web, domain and data. Features included on this project
 ### jwt implementation
 ### Custom autoriztion middleware
 ### Automapper
