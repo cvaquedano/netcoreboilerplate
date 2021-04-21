@@ -1,8 +1,8 @@
 # netcoreboilerplate
-##Backend template project
-##Web api using .net core 5
+## Backend template project
+## Web api using .net core 5
 ## features included on this project
-jwt implementation
+### jwt implementation
 Custom autoriztion middleware
 Automapper
 Controllers with authorize property. password encription
