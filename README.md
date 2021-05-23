@@ -1,14 +1,8 @@
-# 
-## 
-
-## Solution divided on three projects, web, domain and data. Features included on this project
-### 
-
-
-
 # netcoreboilerplate Backend template project
 
 Web api using .net core 5.
+
+Solution divided on three projects, web, domain and data. Features included on this project.
 
 ## Available Features
 
