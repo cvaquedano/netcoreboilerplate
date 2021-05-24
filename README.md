@@ -9,21 +9,37 @@ Solution divided on three projects, web, domain and data. Features included on t
 Features included on this project:
 
 jwt implementation.
-Custom autoriztion middleware
-Automapper
-Controllers with authorize property. password encription
-Dependency inyection
-HealthCheck for ExternalEndpoint
-HTTP call retries usign polly
-Connection Resiliency
-Docker support
+
+Custom autoriztion middleware.
+
+Automapper.
+
+Controllers with authorize property. password encription.
+
+Dependency inyection.
+
+HealthCheck for ExternalEndpoint.
+
+HTTP call retries usign polly.
+
+Connection Resiliency.
+
+Docker support.
+
 Handling Concurrency using Etag and expecting a If-Match header. 
-Use UserSecretsId for safty locally storage of api key and sensitive information
-Reposory patther using unit of work
-Async and await methods
-ProducesResponseType on controllers to improve selfdocumentation
-Unit Test
-Integration Test
+
+Use UserSecretsId for safty locally storage of api key and sensitive information.
+
+Reposory patther using unit of work.
+
+Async and await methods.
+
+ProducesResponseType on controllers to improve selfdocumentation.
+
+Unit Test.
+
+Integration Test.
+
 EF usign sql server.
 
 
