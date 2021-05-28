@@ -14,5 +14,7 @@ namespace NetCoreWebApiBoilerPlate.Domain.Entities
         public string Password { get; set; }
 
         public string Email { get; set; }
+
+        public int Status { get; set; }
     }
 }

@@ -9,7 +9,6 @@ using NetCoreWebApiBoilerPlate.Helpers;
 using NetCoreWebApiBoilerPlate.Services;
 using NetCoreWebApiBoilerPlate.Data.UnitsOfWork;
 using System;
-using NetCoreWebApiBoilerPlate.Data;
 using Polly;
 
 namespace NetCoreWebApiBoilerPlate
@@ -48,8 +47,8 @@ namespace NetCoreWebApiBoilerPlate
 
             services.AddDbContext<Data.Context>(options =>
             {
-                options.UseSqlServer(
-                    @"Server=localhost\SQLEXPRESS;Database=NetCoreWebApiBoilerPlate;Trusted_Connection=True;",
+                // this configuration is store use secret manager.
+                options.UseSqlServer(Configuration.GetConnectionString("BoilerPlateDBConnection"),                   
 
                     // Connection resiliency automatically retries failed database commands.
                     sqlServerOptionsAction: sqlOptions =>
@@ -78,12 +77,20 @@ namespace NetCoreWebApiBoilerPlate
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // global cors policy
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NetCoreWebApiBoilerPlate v1"));
+               
             }
+
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NetCoreWebApiBoilerPlate v1"));
 
             app.UseHttpsRedirection();
 
@@ -93,11 +100,7 @@ namespace NetCoreWebApiBoilerPlate
 
             app.UseRouting();
 
-            // global cors policy
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+          
 
             //app.UseAuthorization();
 
