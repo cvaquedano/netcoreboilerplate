@@ -38,7 +38,7 @@ namespace NetCoreWebApiBoilerPlate.Services
             // authentication successful so generate jwt token
             var token = GenerateJwtToken(user);
 
-            return new AuthenticateResponseDto(user, token);
+            return new AuthenticateResponseDto(token);
         }
 
         public async Task DeleteAsync(User entity)

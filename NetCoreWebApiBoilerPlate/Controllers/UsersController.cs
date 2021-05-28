@@ -74,29 +74,29 @@ namespace NetCoreWebApiBoilerPlate.Controllers
             return NoContent();
         }
 
-        [Authorize]
-        [HttpGet(Name = "GetAll")]
-        [ProducesResponseType(typeof(UserResponseDto), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAll([FromQuery] UsersRequestDto usersRequestDto)
-        {
-            var usersFromServices = await _userService.GetAllAsync(usersRequestDto);
-            var paginationMetadata = new
-            {
-                totalCount = usersFromServices.TotalCount,
-                pageSize = usersFromServices.PageSize,
-                currentPage = usersFromServices.CurrentPage,
-                totalPages = usersFromServices.TotalPages,
+        //[Authorize]
+        //[HttpGet(Name = "GetAll")]
+        //[ProducesResponseType(typeof(UserResponseDto), StatusCodes.Status200OK)]
+        //public async Task<IActionResult> GetAll([FromQuery] UsersRequestDto usersRequestDto)
+        //{
+        //    var usersFromServices = await _userService.GetAllAsync(usersRequestDto);
+        //    var paginationMetadata = new
+        //    {
+        //        totalCount = usersFromServices.TotalCount,
+        //        pageSize = usersFromServices.PageSize,
+        //        currentPage = usersFromServices.CurrentPage,
+        //        totalPages = usersFromServices.TotalPages,
 
-            };
+        //    };
 
-            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(paginationMetadata));
+        //    Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(paginationMetadata));
            
 
-            var userToReturn = _mapper.Map<IEnumerable<UserResponseDto>>(usersFromServices);
-            return Ok(userToReturn);
+        //    var userToReturn = _mapper.Map<IEnumerable<UserResponseDto>>(usersFromServices);
+        //    return Ok(userToReturn);
 
 
-        }
+        //}
 
         [Authorize]
         [HttpGet("{userId:guid}", Name = "GetUser")]
@@ -111,6 +111,23 @@ namespace NetCoreWebApiBoilerPlate.Controllers
             }
 
             var authorToReturn = _mapper.Map<UserResponseDto>(userFromService);
+
+            return Ok(authorToReturn);
+        }
+
+        [Authorize]
+        [HttpGet(Name = "GetUserByToken")]
+        [ProducesResponseType(typeof(UserResponseDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetUserByToken()
+        {
+          
+
+            if ((HttpContext.Items["User"] as User) == null)
+            {
+                return NotFound();
+            }
+
+            var authorToReturn = _mapper.Map<UserResponseDto>(HttpContext.Items["User"] as User);
 
             return Ok(authorToReturn);
         }
