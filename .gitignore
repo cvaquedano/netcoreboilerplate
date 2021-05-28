@@ -39,5 +39,6 @@ typings
 
 # .NET compiled files
 bin
+bin/
 obj
 packages
