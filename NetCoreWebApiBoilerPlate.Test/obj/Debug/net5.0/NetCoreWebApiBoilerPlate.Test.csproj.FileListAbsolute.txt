@@ -1,5 +1,0 @@
-C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Test\obj\Debug\net5.0\NetCoreWebApiBoilerPlate.Test.csprojAssemblyReference.cache
-C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Test\obj\Debug\net5.0\NetCoreWebApiBoilerPlate.Test.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Test\obj\Debug\net5.0\NetCoreWebApiBoilerPlate.Test.AssemblyInfoInputs.cache
-C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Test\obj\Debug\net5.0\NetCoreWebApiBoilerPlate.Test.AssemblyInfo.cs
-C:\Users\Carlos\source\repos\C#\NetCoreWebApiBoilerPlate\NetCoreWebApiBoilerPlate.Test\obj\Debug\net5.0\NetCoreWebApiBoilerPlate.Test.csproj.CoreCompileInputs.cache
