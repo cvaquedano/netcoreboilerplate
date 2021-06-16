@@ -1,4 +1,4 @@
-# netcoreboilerplate Backend template project
+# .Net Core Boilerplate Backend template project
 
 Web api using .net core 5.
 
@@ -46,5 +46,5 @@ EF usign sql server.
 
 ## public URL deploy using azure and git integration
 
-[API URL](https://netboilerplate.azurewebsites.net).
+[API URL](https://netboilerplate.azurewebsites.net/swagger/index.html).
 
