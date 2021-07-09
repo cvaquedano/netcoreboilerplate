@@ -118,9 +118,8 @@ namespace NetCoreWebApiBoilerPlate.Controllers
         [Authorize]
         [HttpGet(Name = "GetUserByToken")]
         [ProducesResponseType(typeof(UserResponseDto), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetUserByToken()
+        public IActionResult GetUserByToken()
         {
-          
 
             if ((HttpContext.Items["User"] as User) == null)
             {
