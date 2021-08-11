@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Data.Repositories
 {
-    public class ExampleMasterRepository : IExampleMasterRepository
+    public class MasterRepository : IMasterRepository
     {
         private readonly Context _context;
-        public ExampleMasterRepository(Context context)
+        public MasterRepository(Context context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
         public async Task AddAsync(ExampleMasterEntity entity)
         {
-            await _context.ExampleMasterEntity.AddAsync(entity);
+            await _context.MasterEntity.AddAsync(entity);
           
         }
 
         public void Delete(ExampleMasterEntity entity)
         {
-            _context.ExampleMasterEntity.Remove(entity);          
+            _context.MasterEntity.Remove(entity);          
         }
 
         public  IQueryable<ExampleMasterEntity> GetAll()
@@ -32,11 +32,11 @@ namespace NetCoreWebApiBoilerPlate.Data.Repositories
 
         public async Task<ExampleMasterEntity> GetByIdAsync(Guid id)
         {
-            return await _context.ExampleMasterEntity.FindAsync(id);
+            return await _context.MasterEntity.FindAsync(id);
         }
         public async Task<bool> IsExistsAsync(Guid id)
         {
-            return await _context.ExampleMasterEntity.AnyAsync(e => e.Id == id);
+            return await _context.MasterEntity.AnyAsync(e => e.Id == id);
         }
 
       
