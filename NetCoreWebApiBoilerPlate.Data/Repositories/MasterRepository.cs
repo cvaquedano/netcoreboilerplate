@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace NetCoreWebApiBoilerPlate.Data.Repositories
 {
-    public class ExampleMasterRepository : IExampleMasterRepository
+    public class MasterRepository : IMasterRepository
     {
         private readonly Context _context;
-        public ExampleMasterRepository(Context context)
+        public MasterRepository(Context context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }

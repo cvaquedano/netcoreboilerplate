@@ -20,7 +20,7 @@ namespace NetCoreWebApiBoilerPlate.Test.UnitTests.Controllers.Users
             var userObject = new User();
             var invalidModel = new AuthenticateRequestDto { Username = "Invalid" };
             var validModel = new AuthenticateRequestDto { Username = "Valid" };
-            var returnObject = new AuthenticateResponseDto(userObject, "fakeToken");
+            var returnObject = new AuthenticateResponseDto("fakeToken");
 
             userServiceMoq.Setup(c => c.AuthenticateAsync(It.IsAny<AuthenticateRequestDto>())).Returns(Task.FromResult(returnObject));
             

@@ -1,0 +1,24 @@
+version: "3.4"
+services:
+
+    api:
+        build:
+            context: .
+            dockerfile: ./NetCoreWebApiBoilerPlate/Dockerfile
+        ports:
+            - "5000:80"
+        environment:
+            - ConnectionStrings__BoilerPlateDBConnection=Server=db;Database=NetCoreWebApiBoilerPlate;User=sa;Password=Chvb2002*;
+            - AppSettings__Secret=Server=JUST A STRING TO USE AS TOKEN
+            - ServiceSetting__OpenWeatherHost=api.openweathermap.org
+        depends_on:
+            - db
+        restart: on-failure
+
+    db:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        ports:
+            - "1444:1433"
+        environment:
+            - SA_PASSWORD=Chvb2002*
+            - ACCEPT_EULA=Y

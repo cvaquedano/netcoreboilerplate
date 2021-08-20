@@ -2,7 +2,7 @@
 
 namespace NetCoreWebApiBoilerPlate.Domain.Repositories
 {
-    public interface IExampleMasterRepository : IRepository<ExampleMasterEntity>
+    public interface IMasterRepository : IRepository<ExampleMasterEntity>
     {
        
     }

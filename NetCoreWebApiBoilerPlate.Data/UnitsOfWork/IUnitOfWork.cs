@@ -8,7 +8,7 @@ namespace NetCoreWebApiBoilerPlate.Data.UnitsOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
-        ExampleMasterRepository ExampleMasterRepository { get; }
+        MasterRepository ExampleMasterRepository { get; }
         MasterDetailRepository MasterDetailRepository { get; }
         MasterStatusRepository MasterStatusRepository { get; }
         UserRepository UserRepository { get; }

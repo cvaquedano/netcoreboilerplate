@@ -76,7 +76,9 @@ namespace NetCoreWebApiBoilerPlate
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env
+            //, Data.Context context
+            )
         {
             // global cors policy
             app.UseCors(x => x
@@ -101,6 +103,8 @@ namespace NetCoreWebApiBoilerPlate
 
             app.UseRouting();
 
+            //context.Database.EnsureDeleted();
+            //context.Database.Migrate();
           
 
             //app.UseAuthorization();

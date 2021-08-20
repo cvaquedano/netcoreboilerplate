@@ -20,6 +20,16 @@ namespace NetCoreWebApiBoilerPlate.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // seed the database with dummy data
+
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+
+            modelBuilder.ApplyConfiguration(new MasterStatusConfiguration());
+
+            modelBuilder.ApplyConfiguration(new MasterEntityConfiguration());
+
+            modelBuilder.ApplyConfiguration(new MasterDetailConfiguration());
+          
             base.OnModelCreating(modelBuilder);
         }
     }

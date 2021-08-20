@@ -11,7 +11,7 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>NetCoreWebApiBoilerPlate.Context</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
-    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
+    <ActiveDebugProfile>NetCoreWebApiBoilerPlate</ActiveDebugProfile>
     <NameOfLastUsedPublishProfile>C:\Users\Carlos\source\repos\C#\netcoreboilerplate\NetCoreWebApiBoilerPlate\Properties\PublishProfiles\netBoilerPlate - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

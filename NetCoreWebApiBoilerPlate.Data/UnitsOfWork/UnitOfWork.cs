@@ -11,12 +11,12 @@ namespace NetCoreWebApiBoilerPlate.Data.UnitsOfWork
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
 
-            ExampleMasterRepository = new ExampleMasterRepository(_context);
+            ExampleMasterRepository = new MasterRepository(_context);
             MasterDetailRepository = new MasterDetailRepository(_context);
             MasterStatusRepository = new MasterStatusRepository(_context);
             UserRepository = new UserRepository(_context);
         }
-        public ExampleMasterRepository ExampleMasterRepository { get; private set; }
+        public MasterRepository ExampleMasterRepository { get; private set; }
 
         public MasterDetailRepository MasterDetailRepository { get; private set; }
 
