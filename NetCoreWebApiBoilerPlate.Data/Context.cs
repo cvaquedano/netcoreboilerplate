@@ -11,7 +11,7 @@ namespace NetCoreWebApiBoilerPlate.Data
 
         }
 
-        public DbSet<ExampleMasterEntity> MasterEntity { get; set; }
+        public DbSet<ExampleMasterEntity> ExampleMasterEntity { get; set; }
         public DbSet<User> User { get; set; }
 
         public DbSet<MasterStatusEntity> MasterStatusEntity { get; set; }

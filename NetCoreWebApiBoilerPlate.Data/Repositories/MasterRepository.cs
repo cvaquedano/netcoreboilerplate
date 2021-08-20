@@ -16,13 +16,13 @@ namespace NetCoreWebApiBoilerPlate.Data.Repositories
         }
         public async Task AddAsync(ExampleMasterEntity entity)
         {
-            await _context.MasterEntity.AddAsync(entity);
+            await _context.ExampleMasterEntity.AddAsync(entity);
           
         }
 
         public void Delete(ExampleMasterEntity entity)
         {
-            _context.MasterEntity.Remove(entity);          
+            _context.ExampleMasterEntity.Remove(entity);          
         }
 
         public  IQueryable<ExampleMasterEntity> GetAll()
@@ -32,11 +32,11 @@ namespace NetCoreWebApiBoilerPlate.Data.Repositories
 
         public async Task<ExampleMasterEntity> GetByIdAsync(Guid id)
         {
-            return await _context.MasterEntity.FindAsync(id);
+            return await _context.ExampleMasterEntity.FindAsync(id);
         }
         public async Task<bool> IsExistsAsync(Guid id)
         {
-            return await _context.MasterEntity.AnyAsync(e => e.Id == id);
+            return await _context.ExampleMasterEntity.AnyAsync(e => e.Id == id);
         }
 
       
